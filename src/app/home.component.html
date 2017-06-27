@@ -1,0 +1,175 @@
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- jQuery -->
+    <script href="../assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+
+    <!-- Datatables -->
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets//js/dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/dataTables.fixedHeader.min.js"></script>
+    <script src="assets/js/vfs_fonts.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="assets/js/custom.min.js"></script>
+
+        <script src="assets/js/moment.min.js"></script>
+
+      <script src="assets/js/daterangepicker.js"></script>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Admin Panel</span></a>
+            </div>
+
+
+           
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+
+                  <li><a><i class="fa fa-table"></i> Events <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="index.html">Show Events</a></li>
+                      <li><a href="new.html">Add New</a></li>
+                    </ul>
+                  </li>
+ 
+                </ul>
+              </div>
+
+
+            </div>
+            <!-- /sidebar menu -->
+
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="/signout" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">John Doe
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>All Events </h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                  <div class="row">
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    <input type="text" id="search" placeholder="Event .... " />
+                    <div id="search-list"></div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    Select Category 
+                    <select id="select">
+                      <option value="Music">Music</option>
+                      <option value="sports">sports</option>
+                      <option value="social">Social Media</option>
+                    </select>
+                    </div>
+
+                    <div class="row">
+
+                        <form class="" id="date">
+  
+                                <div class="input-prepend input-group">
+                                  <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                  <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" placeholder=' 01/01/2016 - 01/25/2016' />
+                                </div>
+
+                        </form>
+                      </div>
+
+                    </div>
+
+
+                    <table  class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Description</th>
+                          <th>Category</th>
+                          <th>From</th>
+                          <th>To</th>
+                        </tr>
+                      </thead>
+
+
+                      <tbody id="r">
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+
+
+
+
+  </body>
+
