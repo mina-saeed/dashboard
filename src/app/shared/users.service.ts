@@ -31,4 +31,35 @@ export class users {
       		});
     	
       	}
+    register(user_name , user_email , user_password ,request_token):any {
+
+        let headers = new Headers();
+            headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+            headers.append('Content-Type', 'application/json')
+            let body = {
+                name: user_name,
+                email:user_email,
+                password:user_password,
+                token: request_token,
+        };
+         this.http.post(this.url + '/register', JSON.stringify(body), new RequestOptions({  headers: headers}))
+                .map(res => {return res.status}).subscribe(res => {
+                    if(res){
+                        
+                        return this.router.navigate(['/login'])                    
+                    }else{
+                        return false
+                    }
+
+              });
+        
+          }          
+	logout():any {
+
+		let headers = new Headers();
+    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+    		this.http.get(this.url+'/logout', new RequestOptions({  headers: headers})).map(res=>res.json).subscribe(data=>{ if(data){ return this.router.navigate([''])}})
+
+    	
+      	}      	
 }

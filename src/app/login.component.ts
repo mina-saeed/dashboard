@@ -42,4 +42,31 @@ export class login implements OnInit{
 
 
 	}
+	onRegister(userData){
+		//17-06-27 03:07
+		let date = new Date()
+
+		let h = date.getHours()
+		let m  = date.getMinutes()
+		var minutes :string=''
+		var hours :string='' 
+		if(m<10){
+			minutes = '0'+''+m+''
+		}else{
+			minutes = ''+m+''
+		}
+
+		if(h<10){
+			hours = '0'+''+h+''
+		}else{
+			hours = ''+h+''
+		}
+		let date_format = hours+':'+minutes
+		let token = btoa(date_format+date_format)
+
+
+		this.admin = this.user.register(userData.reg_name, userData.reg_email, userData.reg_password , token)
+
+
+	}	
 } 
