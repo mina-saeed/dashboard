@@ -7,7 +7,10 @@ import {medicines} from '../medicines/medicines.component'
 import {newMedicine} from '../medicines/newMedicine.component'
 import {products} from '../products/products.component'
 import {newProduct} from '../products/newProduct.component'
-
+import {categories} from '../categories/categories.component'
+import {newCategory} from '../categories/newCategory.component'
+import {productCategory} from '../productCategory/productCategory.component'
+import {newProductCategory} from '../productCategory/newProductCategory.component'
 const componentRoutes: Routes =[
 	
 			{
@@ -42,6 +45,22 @@ const componentRoutes: Routes =[
 			{
 				path:'newproduct',
 				component:newProduct
+			},
+			{
+				path:'medicineCategory',
+				component:categories
+			},
+			{
+				path: 'newCategory',
+				component: newCategory 
+			},
+			{
+				path: 'productCategory',
+				component: productCategory
+			},
+			{
+				path: 'newProductCategory',
+				component: newProductCategory
 			}			
 		]
 
@@ -56,4 +75,16 @@ const componentRoutes: Routes =[
 	]
 })
 export class routes{}
-export const RoutingComponents =[home, login , logout , medicines, newMedicine , products, newProduct]
+export const RoutingComponents =[
+									home,
+									login ,
+									logout ,
+									medicines,
+									newMedicine ,
+									products, 
+									newProduct ,
+									categories,
+									newCategory ,
+									productCategory,
+									newProductCategory
+								]
