@@ -11,11 +11,14 @@ import {categories} from '../categories/categories.component'
 import {newCategory} from '../categories/newCategory.component'
 import {productCategory} from '../productCategory/productCategory.component'
 import {newProductCategory} from '../productCategory/newProductCategory.component'
+import {userGuard} from '../guards/user.guard'
+import {users} from '../shared/users.service'
 const componentRoutes: Routes =[
 	
 			{
 				path:'home',
-				component: home
+				component: home,
+				canActivate: [userGuard]
 			},
 			{
 				path:'login',
@@ -32,35 +35,43 @@ const componentRoutes: Routes =[
 			},
 			{
 				path:'medicines',
-				component:medicines
+				component:medicines,
+				canActivate: [userGuard]
 			},
 			{
 				path:'newMedicine',
-				component: newMedicine
+				component: newMedicine,
+				canActivate: [userGuard]
 			},
 			{
 				path:'products',
-				component:products
+				component:products,
+				canActivate: [userGuard]
 			},
 			{
 				path:'newproduct',
-				component:newProduct
+				component:newProduct,
+				canActivate: [userGuard]
 			},
 			{
 				path:'medicineCategory',
-				component:categories
+				component:categories,
+				canActivate: [userGuard]
 			},
 			{
 				path: 'newCategory',
-				component: newCategory 
+				component: newCategory ,
+				canActivate: [userGuard]
 			},
 			{
 				path: 'productCategory',
-				component: productCategory
+				component: productCategory,
+				canActivate: [userGuard]
 			},
 			{
 				path: 'newProductCategory',
-				component: newProductCategory
+				component: newProductCategory,
+				canActivate: [userGuard]
 			}			
 		]
 
@@ -69,6 +80,10 @@ const componentRoutes: Routes =[
 
 	imports:[
 		RouterModule.forRoot(componentRoutes)
+	],
+
+	providers: [
+		userGuard,users
 	],
 	exports:[
 		RouterModule
