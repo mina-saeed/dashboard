@@ -155,18 +155,19 @@
                                 Please Add Medicine Price
                           </div>
 
-                    <span class="section">Medicine Category</span>
+                    <span class="section">Product Category</span>
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Category <span class="required">*</span>
                         </label>
                     <div class="btn-group">
                     <ul>
                       <select [(ngModel)]="category" class="form-control" name="category">     
-                       <option *ngFor="let x of allCategories" [value]="x.name.name_english">{{x.name.name_english}}</option>
+                       <option *ngFor="let x of allProductCategories" [value]="x.name.name_english">{{x.name.name_english}}</option>
                        </select> 
                     </ul>
                     </div>
                     </div>
+                    <!--
                     <span class="section">Product Sub-Category</span>
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Sub-Category <span class="required">*</span>
@@ -179,6 +180,7 @@
                     </ul>
                     </div>
                     </div>
+                    -->
 
                     <span class="section" name="pharmacyID">Pharmacy</span>
                     <div class="form-group">

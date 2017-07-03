@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http'
 import { AppComponent } from './app.component';
 import {login} from './login.component'
 import {home} from './home.component'
+import {sidebar} from './sidebar.component'
 import {logout} from './logout.component'
 import {medicines} from './medicines/medicines.component'
 import {newMedicine} from './medicines/newMedicine.component'
@@ -33,7 +34,8 @@ import {users} from './shared/users.service'
 		categories,
 		newCategory,
 		productCategory,
-		newProductCategory
+		newProductCategory,
+    sidebar
 
   ],
   imports: [
