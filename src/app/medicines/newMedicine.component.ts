@@ -9,7 +9,7 @@ import { Router } from '@angular/router'
 
 })
 
-export class newMedicine {
+export class newMedicine implements OnInit{
 	private allCategories = []
 	constructor(private medicine: medicineService, private router: Router, private categoryObj: categoryService) { }
 	ngOnInit() {
