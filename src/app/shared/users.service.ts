@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class users {
 	private user: any;
-	private url = 'http://207.154.240.16:3001'
+	private url = 'http://localhost:3001'
 	constructor(private http: Http , private router: Router){
 
 	}

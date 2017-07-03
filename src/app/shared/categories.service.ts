@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 
 export class categoryService {
-	private url: string  = 'http://207.154.240.16:3006/';
+	private url: string  = 'http://localhost:3006/';
 
 	constructor(private http: Http , private router: Router){}
 
