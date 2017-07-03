@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class users {
 	private user: any;
-	private url = 'http://207.154.240.16:3001'
+	private url = 'http://localhost:3001'
 	constructor(private http: Http , private router: Router){
 
 	}
@@ -23,6 +23,7 @@ export class users {
 		 this.http.post(this.url + '/login', JSON.stringify(body), new RequestOptions({  headers: headers}))
     			.map(res => res.json()).subscribe(data => {
     				if(data){
+					    localStorage.setItem('user', JSON.stringify(data));
     					this.user = data;
     					return this.router.navigate(['/home'],data[0])    				
     				}else{
@@ -60,11 +61,12 @@ export class users {
 		let headers = new Headers();
     		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
     		this.http.get(this.url+'/logout', new RequestOptions({  headers: headers})).map(res=>res.json).subscribe(data=>{ if(data){ return this.router.navigate([''])}})
-
+			localStorage.clear();
+			this.user = null;
     	
       	}
 
 	loggedIn():any {
-        return this.user != null;
+        return localStorage.getItem('user') !=null;
     }      	
 }

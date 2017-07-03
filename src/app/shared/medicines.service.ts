@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 
 export class medicineService {
-	private url: string  = 'http://207.154.240.16:3004/';
+	private url: string  = 'http://localhost:3004/';
 
 	constructor(private http: Http , private router: Router){}
 

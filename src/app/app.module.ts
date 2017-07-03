@@ -16,8 +16,7 @@ import {newCategory} from './categories/newCategory.component'
 import {productCategory} from './productCategory/productCategory.component'
 import {newProductCategory} from './productCategory/newProductCategory.component'
 import {routes, RoutingComponents} from './Routes/app.routing'
-import {userGuard} from './guards/user.guard'
-import {users} from './shared/users.service'
+
 
 
 @NgModule({
@@ -41,7 +40,6 @@ import {users} from './shared/users.service'
   imports: [
     BrowserModule, FormsModule , HttpModule, routes
     ],
-  providers: [userGuard,users],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

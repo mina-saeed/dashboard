@@ -5,7 +5,7 @@ import {Http, RequestOptions, Headers} from '@angular/http'
 
 export class productService{
 
-	private url ="http://207.154.240.16:3005/"
+	private url ="http://localhost:3005/"
 	constructor(private http: Http){}
 
 	allProducts(){

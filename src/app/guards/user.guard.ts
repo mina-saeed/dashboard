@@ -10,7 +10,6 @@ export class userGuard implements CanActivate{
 
   canActivate(){
     if(this.users.loggedIn()){
-      console.log(this.users.loggedIn);
       return true;
     } else {
       this.router.navigate(['/login']);
