@@ -168,13 +168,9 @@
                         </label>
                     <div class="btn-group">
                     <ul>
-                    <select class="form-control" name="category" ngModel>
-                        <option value="one">One</option>
-                        <option value="two">Two</option>
-                        <option value="three">Three</option>
-                        <option value="four">Four</option>
-                        <option value="five">Five</option>
-                    </select>
+                      <select [(ngModel)]="category" class="form-control" name="category">     
+                       <option *ngFor="let x of allCategories" [value]="x.name.name_english">{{x.name.name_english}}</option>
+                       </select> 
                     </ul>
                     </div>
                     </div>

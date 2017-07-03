@@ -17,8 +17,7 @@ const componentRoutes: Routes =[
 	
 			{
 				path:'home',
-				component: home,
-				canActivate: [userGuard]
+				component: home
 			},
 			{
 				path:'login',
@@ -35,43 +34,35 @@ const componentRoutes: Routes =[
 			},
 			{
 				path:'medicines',
-				component:medicines,
-				canActivate: [userGuard]
+				component:medicines			
 			},
 			{
 				path:'newMedicine',
-				component: newMedicine,
-				canActivate: [userGuard]
+				component: newMedicine
 			},
 			{
 				path:'products',
-				component:products,
-				canActivate: [userGuard]
+				component:products
 			},
 			{
 				path:'newproduct',
-				component:newProduct,
-				canActivate: [userGuard]
+				component:newProduct
 			},
 			{
 				path:'medicineCategory',
-				component:categories,
-				canActivate: [userGuard]
+				component:categories
 			},
 			{
 				path: 'newCategory',
-				component: newCategory ,
-				canActivate: [userGuard]
+				component: newCategory 
 			},
 			{
 				path: 'productCategory',
-				component: productCategory,
-				canActivate: [userGuard]
+				component: productCategory
 			},
 			{
 				path: 'newProductCategory',
-				component: newProductCategory,
-				canActivate: [userGuard]
+				component: newProductCategory
 			}			
 		]
 

@@ -4,18 +4,42 @@ import {FormsModule} from '@angular/forms'
 import {HttpModule} from '@angular/http'
 import { AppComponent } from './app.component';
 import {login} from './login.component'
+import {home} from './home.component'
+import {logout} from './logout.component'
+import {medicines} from './medicines/medicines.component'
+import {newMedicine} from './medicines/newMedicine.component'
+import {products} from './products/products.component'
+import {newProduct} from './products/newProduct.component'
+import {categories} from './categories/categories.component'
+import {newCategory} from './categories/newCategory.component'
+import {productCategory} from './productCategory/productCategory.component'
+import {newProductCategory} from './productCategory/newProductCategory.component'
 import {routes, RoutingComponents} from './Routes/app.routing'
+import {userGuard} from './guards/user.guard'
+import {users} from './shared/users.service'
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoutingComponents
+    RoutingComponents,
+    home,
+		login ,
+		logout ,
+		medicines,
+		newMedicine,
+		products, 
+		newProduct,
+		categories,
+		newCategory,
+		productCategory,
+		newProductCategory
 
   ],
   imports: [
     BrowserModule, FormsModule , HttpModule, routes
     ],
-  providers: [],
+  providers: [userGuard,users],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
