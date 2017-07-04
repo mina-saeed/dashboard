@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class users {
 	private user: any;
-	private url = 'http://localhost:3001'
+	private url = 'http://207.154.240.16:3001'
 	constructor(private http: Http , private router: Router){
 
 	}
@@ -68,5 +68,29 @@ export class users {
 
 	loggedIn():any {
         return localStorage.getItem('user') !=null;
-    }      	
+    }
+
+	getAllusers():any{
+		let headers = new Headers();
+    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+			headers.append('Content-Type', 'application/json')
+    		this.http.get(this.url+'/allUsers', new RequestOptions({  headers: headers})).map(res=>res.json());
+
+	}  
+
+	acceptuser(accepteduser):any{
+		let headers = new Headers();
+            headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+            headers.append('Content-Type', 'application/json')
+         this.http.post(this.url + '/admin/confirmAdmin', JSON.stringify(accepteduser), new RequestOptions({  headers: headers}))
+                .map(res => {return res.status}).subscribe(res => {
+                    if(res){
+                        return this.router.navigate(['/allusers'])                    
+                    }else{
+                        return false
+                    }
+
+              });
+        
+	} 	
 }

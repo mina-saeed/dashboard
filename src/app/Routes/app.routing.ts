@@ -13,6 +13,9 @@ import {productCategory} from '../productCategory/productCategory.component'
 import {newProductCategory} from '../productCategory/newProductCategory.component'
 import {userGuard} from '../guards/user.guard'
 import {users} from '../shared/users.service'
+import {deactivateGuard} from '../guards/deactivate.guard'
+import {allusers} from '../allusers/allusers.component'
+
 const componentRoutes: Routes =[
 	
 			{
@@ -22,11 +25,13 @@ const componentRoutes: Routes =[
 			},
 			{
 				path:'login',
-				component:login
+				component:login,
+				canActivate: [deactivateGuard]
 			},
 			{
 				path:'',
-				component:login
+				component:login,
+				canActivate: [deactivateGuard]
 			},
 	
 			{
@@ -73,7 +78,12 @@ const componentRoutes: Routes =[
 				path: 'newProductCategory',
 				component: newProductCategory,
 				canActivate:[userGuard]
-			}			
+			},
+			{
+				path: 'users',
+				component: allusers,
+				canActivate: [userGuard]
+			}
 		]
 
 
@@ -84,7 +94,7 @@ const componentRoutes: Routes =[
 	],
 
 	providers: [
-		userGuard,users
+		userGuard,users,deactivateGuard
 	],
 	exports:[
 		RouterModule
@@ -102,5 +112,6 @@ export const RoutingComponents =[
 									categories,
 									newCategory ,
 									productCategory,
-									newProductCategory
+									newProductCategory,
+									allusers
 								]

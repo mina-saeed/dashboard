@@ -15,7 +15,8 @@ import {categories} from './categories/categories.component'
 import {newCategory} from './categories/newCategory.component'
 import {productCategory} from './productCategory/productCategory.component'
 import {newProductCategory} from './productCategory/newProductCategory.component'
-import {routes, RoutingComponents} from './Routes/app.routing'
+import {routes, RoutingComponents} from './Routes/app.routing';
+import {allusers} from './allusers/allusers.component'
 
 
 
@@ -34,7 +35,8 @@ import {routes, RoutingComponents} from './Routes/app.routing'
 		newCategory,
 		productCategory,
 		newProductCategory,
-    sidebar
+    sidebar,
+    allusers
 
   ],
   imports: [
