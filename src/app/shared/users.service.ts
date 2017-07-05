@@ -74,7 +74,7 @@ export class users {
 		let headers = new Headers();
     		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
 			headers.append('Content-Type', 'application/json')
-    		this.http.get(this.url+'/allUsers', new RequestOptions({  headers: headers})).map(res=>res.json());
+    		return this.http.get(this.url+'/allUsers', new RequestOptions({  headers: headers})).map(res=>res.json());
 
 	}  
 
@@ -85,7 +85,7 @@ export class users {
          this.http.post(this.url + '/admin/confirmAdmin', JSON.stringify(accepteduser), new RequestOptions({  headers: headers}))
                 .map(res => {return res.status}).subscribe(res => {
                     if(res){
-                        return this.router.navigate(['/allusers'])                    
+                        return this.router.navigate(['/users'])                    
                     }else{
                         return false
                     }

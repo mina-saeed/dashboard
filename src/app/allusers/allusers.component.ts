@@ -9,6 +9,7 @@ export class allusers implements OnInit {
 
   constructor(private user: users) { }
 		private allusers =[] 
+    private usertype = []
 
 		ngOnInit(){
 			 this.user.getAllusers().subscribe(res=>{
@@ -22,10 +23,11 @@ export class allusers implements OnInit {
 			 })
 		}
 
-    Onacceptuser(useremail){
+    Onacceptuser(useremail,index){
       const accepteduser = {
         email: useremail,
-        active: '1'
+        active: '1',
+        type: this.usertype[index]
       }
       this.user.acceptuser(accepteduser);
     }
