@@ -15,6 +15,7 @@ import {userGuard} from '../guards/user.guard'
 import {users} from '../shared/users.service'
 import {deactivateGuard} from '../guards/deactivate.guard'
 import {allusers} from '../allusers/allusers.component'
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 const componentRoutes: Routes =[
 	
@@ -90,7 +91,7 @@ const componentRoutes: Routes =[
 @NgModule({
 
 	imports:[
-		RouterModule.forRoot(componentRoutes)
+		RouterModule.forRoot(componentRoutes),FlashMessagesModule
 	],
 
 	providers: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {users} from '../shared/users.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'allusers',
@@ -7,7 +8,7 @@ import {users} from '../shared/users.service';
 })
 export class allusers implements OnInit {
 
-  constructor(private user: users) { }
+  constructor(private user: users,private flashMessage: FlashMessagesService) { }
 		private allusers =[] 
     private usertype = []
 
@@ -24,6 +25,11 @@ export class allusers implements OnInit {
 		}
 
     Onacceptuser(useremail,index){
+      if(this.usertype.length ==0){
+        //this.flashMessage.show('Please select a type', { cssClass: 'alert-danger', timeout: 3000 });
+        return false;
+    }
+      else{
       const accepteduser = {
         email: useremail,
         active: '1',
@@ -31,5 +37,6 @@ export class allusers implements OnInit {
       }
       this.user.acceptuser(accepteduser);
     }
+  }
 
 }

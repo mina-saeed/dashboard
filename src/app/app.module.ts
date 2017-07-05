@@ -17,7 +17,7 @@ import {productCategory} from './productCategory/productCategory.component'
 import {newProductCategory} from './productCategory/newProductCategory.component'
 import {routes, RoutingComponents} from './Routes/app.routing';
 import {allusers} from './allusers/allusers.component'
-
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 @NgModule({
@@ -40,7 +40,7 @@ import {allusers} from './allusers/allusers.component'
 
   ],
   imports: [
-    BrowserModule, FormsModule , HttpModule, routes
+    BrowserModule, FormsModule , HttpModule, routes, FlashMessagesModule
     ],
   bootstrap: [AppComponent]
 })
