@@ -30,4 +30,24 @@ export class categoryService {
     			return res.status
     		})
 	}	
+
+		getAllsubCategories(id):any{
+		
+		let headers = new Headers();
+    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+    		headers.append('Content-Type', 'application/json')
+
+		return this.http.get(this.url+'all'+id ,new RequestOptions({headers: headers})).map(res=>res.json())
+	}
+
+		addsubCategory(category){
+
+		let headers = new Headers();
+    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+    		headers.append('Content-Type', 'application/json')
+
+    		return this.http.post(this.url+'new', JSON.stringify(category), new RequestOptions({headers: headers})).map(res=>{
+    			return res.status
+    		})
+	}
 }

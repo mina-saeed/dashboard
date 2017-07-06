@@ -18,6 +18,8 @@ import {deactivateGuard} from '../guards/deactivate.guard'
 import {allusers} from '../allusers/allusers.component'
 import {sidebar} from '../sidebar.component'
 import { AllpharmacyComponent } from '../allpharmacy/allpharmacy.component';
+import {subcategory} from '../subcategory/subcategory.component'
+import {newSubcategory} from '../subcategory/newSubcategory.component'
 
 const componentRoutes: Routes =[
 	
@@ -92,6 +94,16 @@ const componentRoutes: Routes =[
 				component: AllpharmacyComponent,
 				canActivate: [userGuard]
 
+			},
+			{
+				path: 'subCategory/:id',
+				component: subcategory,
+				canActivate :[userGuard]
+			},
+			{
+				path: 'newsubCategory/:id',
+				component: newSubcategory,
+				canActivate :[userGuard]
 			}
 		]
 
@@ -124,5 +136,7 @@ export const RoutingComponents =[
 									newProductCategory,
 									allusers,
 									sidebar,
-									AllpharmacyComponent
+									AllpharmacyComponent,
+									subcategory,
+									newSubcategory
 								]
