@@ -35,7 +35,10 @@ export class allusers implements OnInit {
         active: '1',
         type: this.usertype[index]
       }
-      this.user.acceptuser(accepteduser);
+      this.user.acceptuser(accepteduser).subscribe(res => {
+                      location.reload();
+              });
+        
     }
   }
 

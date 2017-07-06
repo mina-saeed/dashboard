@@ -11,6 +11,8 @@ import { Router } from '@angular/router'
 
 export class newMedicine implements OnInit{
 	private allCategories = []
+	private type: Boolean = false;
+	private fixedprice :String = 'Yes';
 	constructor(private medicine: medicineService, private router: Router, private categoryObj: categoryService) { }
 	ngOnInit() {
 		this.categoryObj.getAllCategories().subscribe(res => {
@@ -26,6 +28,15 @@ export class newMedicine implements OnInit{
 				this.router.navigate(['/medicines'])
 			}
 		})
+	}
+
+	Onchange(fixed){
+		if(fixed == 'No'){
+			this.type = true;
+		}
+		else{
+			this.type = false;
+		}
 	}
 }
 

@@ -13,9 +13,11 @@ import {productCategory} from '../productCategory/productCategory.component'
 import {newProductCategory} from '../productCategory/newProductCategory.component'
 import {userGuard} from '../guards/user.guard'
 import {users} from '../shared/users.service'
+import {pharmacy} from '../shared/pharmacy.service'
 import {deactivateGuard} from '../guards/deactivate.guard'
 import {allusers} from '../allusers/allusers.component'
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import {sidebar} from '../sidebar.component'
+import { AllpharmacyComponent } from '../allpharmacy/allpharmacy.component';
 
 const componentRoutes: Routes =[
 	
@@ -84,6 +86,12 @@ const componentRoutes: Routes =[
 				path: 'users',
 				component: allusers,
 				canActivate: [userGuard]
+			},
+			{
+				path: 'pharmacies',
+				component: AllpharmacyComponent,
+				canActivate: [userGuard]
+
 			}
 		]
 
@@ -91,11 +99,11 @@ const componentRoutes: Routes =[
 @NgModule({
 
 	imports:[
-		RouterModule.forRoot(componentRoutes),FlashMessagesModule
+		RouterModule.forRoot(componentRoutes)
 	],
 
 	providers: [
-		userGuard,users,deactivateGuard
+		userGuard,users,deactivateGuard,pharmacy
 	],
 	exports:[
 		RouterModule
@@ -114,5 +122,7 @@ export const RoutingComponents =[
 									newCategory ,
 									productCategory,
 									newProductCategory,
-									allusers
+									allusers,
+									sidebar,
+									AllpharmacyComponent
 								]

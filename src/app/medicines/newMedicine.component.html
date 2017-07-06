@@ -142,8 +142,19 @@
                         </div>                     
                       <span class="section">Medicine Price</span>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Price <span class="required">*</span>
-                        </label>
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Fixed Price <span class="required">*</span>
+                      </label>
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                      <select required class="form-control" id="fixed" name="fixed" [(ngModel)]="fixedprice" #fixed (change)="Onchange(fixed.value)">
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                      </select>
+                      </div>
+                      </div>
+                      <div *ngIf="type">
+                      <div class="item form-group">
+                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Add Price <span class="required">*</span>
+                      </label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
                           <input type="text" id="price" name="price" #priceRef="ngModel" ngModel required class="form-control"/>
                         </div>
@@ -151,6 +162,7 @@
                           <div [hidden]="priceRef.valid || priceRef.untouched " class="alert alert-danger">
                                 Please Add Medicine Price
                           </div>
+                      </div>
                       <span class="section">Medicine Milligrams</span>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Milligrams <span class="required">*</span>
