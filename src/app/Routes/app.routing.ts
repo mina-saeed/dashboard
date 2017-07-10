@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core'
 import {RouterModule ,Routes} from '@angular/router'
+import { ChartsModule } from 'ng2-charts';
 import {home} from '../home.component'
 import {login} from '../login.component'
 import {logout} from '../logout.component'
@@ -23,6 +24,7 @@ import {subcategory} from '../subcategory/subcategory.component'
 import {newSubcategory} from '../subcategory/newSubcategory.component'
 import {productSubcategory} from '../productSubcategory/productSubcategory.component'
 import {newproductSubcategory} from '../productSubcategory/newproductSubcategory.component'
+import {LineChartDemoComponent} from '../chart/chart.component'
 
 const componentRoutes: Routes =[
 	
@@ -117,6 +119,11 @@ const componentRoutes: Routes =[
 				path: 'newproductsubCategory/:id',
 				component: newproductSubcategory,
 				canActivate :[userGuard]
+			},
+			{  path: 'chart',
+			   component: LineChartDemoComponent,
+			   canActivate: [userGuard]
+
 			}
 		]
 
@@ -124,7 +131,7 @@ const componentRoutes: Routes =[
 @NgModule({
 
 	imports:[
-		RouterModule.forRoot(componentRoutes)
+		RouterModule.forRoot(componentRoutes),ChartsModule
 	],
 
 	providers: [
@@ -153,5 +160,6 @@ export const RoutingComponents =[
 									subcategory,
 									newSubcategory,
 									productSubcategory,
-									newproductSubcategory
+									newproductSubcategory,
+									LineChartDemoComponent
 								]

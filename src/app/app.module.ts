@@ -5,7 +5,7 @@ import {HttpModule} from '@angular/http'
 import { AppComponent } from './app.component';
 import {routes, RoutingComponents} from './Routes/app.routing';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 
   ],
   imports: [
-    BrowserModule, FormsModule , HttpModule, routes,FlashMessagesModule
+    BrowserModule, FormsModule , HttpModule, routes,FlashMessagesModule,ChartsModule
     ],
   bootstrap: [AppComponent]
 })
