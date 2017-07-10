@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core'
 import {Router} from '@angular/router'
 import {Http , Headers , RequestOptions} from '@angular/http'
 import 'rxjs/add/operator/map' 
+import {api} from './api.service'
 
 
 @Injectable()
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/map'
 export class medicineService {
 	private url: string  = 'http://207.154.240.16:3004/';
 
-	constructor(private http: Http , private router: Router){}
+	constructor(private http: Http , private router: Router,private api :api){}
 
 	getAllMedicines():any{
 		
@@ -17,7 +18,7 @@ export class medicineService {
     		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
     		headers.append('Content-Type', 'application/json')
 
-		return this.http.get(this.url+'all' ,new RequestOptions({headers: headers})).map(res=>res.json())
+		return this.http.get(this.api.medicineUrl+'all' ,new RequestOptions({headers: headers})).map(res=>res.json())
 	}
 
 	addMedicine(medicine){
@@ -26,7 +27,7 @@ export class medicineService {
     		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
     		headers.append('Content-Type', 'application/json')
 
-    		return this.http.post(this.url+'new', JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
+    		return this.http.post(this.api.medicineUrl+'new', JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
     			return res.status
     		})
 	}	

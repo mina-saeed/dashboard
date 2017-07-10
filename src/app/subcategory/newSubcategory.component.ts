@@ -11,14 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class newSubcategory {
-	private paramName:String
+	private categoryId:String
 	constructor(private category : categoryService, private router:Router,private route: ActivatedRoute){
-	this.paramName = route.snapshot.params['id']; 
+	this.categoryId = route.snapshot.params['id']; 
+	console.log(this.categoryId)
 	}
 addNew(categoryFormData){
+	console.log(categoryFormData)
 	this.category.addsubCategory(categoryFormData).subscribe(res=>{
 		if(res){
-			this.router.navigate(['/subCategory'+this.paramName])
+			this.router.navigate(['/subCategory/'+this.categoryId])
 		}
 	})
 }

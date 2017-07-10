@@ -50,37 +50,26 @@
             <div class="x_panel">
               <div class="x_content">
           <a href="/newCategory" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add new Category</a>
-                <div class="table">
-                  <div class="col-md-3">
-                    <label for="Name">Name</label>
-                  </div>
-                  <div class="col-md-4">
-                    <label for="Description">Description</label>
-                  </div>
-                  <div class="col-md-3">
-                    <label for="Add">Add new Subcategories</label>
-                  </div>
-                  <div class="col-md-2">
-                    <label for="Show">Show SubCategory</label>
-                  </div>
-                  <br><br>
-                  <div *ngFor="let category of allCategories">
-                    <div class="col-md-3">
-                      <label for="Name">{{category.name.name_english}}</label>
-                    </div>
-                    <div class="col-md-4">
-                      <label for="Description">{{category.description.english_description}}</label>
-                    </div>
-                    <div class="col-md-3">
-                      <input type="button" (click)="addnew(category._id)" value="Add" class="btn btn-primary">
-                    </div>
-                   <div class="col-md-2">
-                      <input type="button" (click)="showsub(category._id)" value="Show" class="btn btn-primary">
-                    </div>
-                    <br><br>
-                  </div>
-                </div>
-
+                
+                
+           <table  class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Description</th>
+                          <th>Show Subcategories</th>
+                          <th>Add Subcategories</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let category of allCategories">
+                      	<tr>
+                      		<td>{{category.name.name_english}}</td>
+                      		<td>{{category.description.english_description}}</td>
+                          <td><input type="button" (click)="showsub(category._id)" value="Show" class="btn btn-primary"></td>
+                          <td><input type="button" (click)="addnew(category._id)" value="Add" class="btn btn-primary"></td>
+                      	</tr>
+                      </tbody>
+                    </table>
               </div>
             </div>
 

@@ -9,7 +9,7 @@
             </div>
 
             <!-- sidebar menu -->
-          <app-sidebar></app-sidebar>
+            <app-sidebar></app-sidebar>
             <!-- /sidebar menu -->
 
           </div>
@@ -38,7 +38,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add New Sub Category </h3>
+                <h3>Add New SubCategory </h3>
               </div>
 
               </div>
@@ -53,15 +53,6 @@
 
                     <form class="form-horizontal form-label-left" #categoryForm ="ngForm" (ngSubmit)="addNew(categoryForm.value)" novalidate >
 
-                     <!-- <span class="section">Category ID</span>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id">Category ID<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="categoryId" name="categoryId"  class="form-control col-md-7 col-xs-12" ngModel disabled>
-                        </div>
-                            </div> 
-                            -->
                       <span class="section">Category Name</span>
                     <div ngModelGroup="name">   
                       <div class="item form-group">
