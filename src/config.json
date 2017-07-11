@@ -1,0 +1,10 @@
+{
+    "userIP": "http://207.154.240.16:3001",
+    "pharmacyIP": "http://207.154.240.16:3001",
+    "medicineIP": "http://207.154.240.16:3004/",
+    "productIP": "http://207.154.240.16:3005/",
+    "categoryIP": "http://207.154.240.16:3006/",
+    "productcategoryIP": "http://207.154.240.16:3007/",
+
+    "auth": "Basic YWRtaW46MTIzNDU2"
+}

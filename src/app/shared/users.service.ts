@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core'
 import {Router} from '@angular/router'
 import { Http ,Headers ,RequestOptions,Response } from '@angular/http'
 import {api} from './api.service'
+var config = JSON.parse(JSON.stringify(require('../../config.json')));
 
 import 'rxjs/add/operator/map'
 @Injectable()
@@ -14,14 +15,14 @@ export class users {
 	getUser(user_email , user_password ,request_token):any {
 
 		let headers = new Headers();
-    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+    		headers.append('Authorization', config.auth);
     		headers.append('Content-Type', 'application/json')
     		let body = {
     			email:user_email,
 			password:user_password,
 			token: request_token,
 		};
-		 this.http.post(this.api.userUrl+ '/login', JSON.stringify(body), new RequestOptions({  headers: headers}))
+		 this.http.post(config.userIP+ '/login', JSON.stringify(body), new RequestOptions({  headers: headers}))
     			.map(res => res.json()).subscribe(data => {
     				if(data){
 					    localStorage.setItem('user', JSON.stringify(data));
@@ -37,7 +38,7 @@ export class users {
     register(user_name , user_email , user_password ,request_token):any {
 
         let headers = new Headers();
-            headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+            headers.append('Authorization', config.auth);
             headers.append('Content-Type', 'application/json')
             let body = {
                 name: user_name,
@@ -45,7 +46,7 @@ export class users {
                 password:user_password,
                 token: request_token,
         };
-         this.http.post(this.api.userUrl + '/register', JSON.stringify(body), new RequestOptions({  headers: headers}))
+         this.http.post(config.userIP + '/register', JSON.stringify(body), new RequestOptions({  headers: headers}))
                 .map(res => {return res.status}).subscribe(res => {
                     if(res){
                         
@@ -60,8 +61,8 @@ export class users {
 	logout():any {
 
 		let headers = new Headers();
-    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
-    		this.http.get(this.api.userUrl+'/logout', new RequestOptions({  headers: headers})).map(res=>res.json).subscribe(data=>{ if(data){ return this.router.navigate([''])}})
+    		headers.append('Authorization', config.auth);
+    		this.http.get(config.userIP+'/logout', new RequestOptions({  headers: headers})).map(res=>res.json).subscribe(data=>{ if(data){ return this.router.navigate([''])}})
 			localStorage.clear();
 			this.user = null;
     	
@@ -73,17 +74,17 @@ export class users {
 
 	getAllusers():any{
 		let headers = new Headers();
-    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+    		headers.append('Authorization', config.auth);
 			headers.append('Content-Type', 'application/json')
-    		return this.http.get(this.api.userUrl+'/allUsers', new RequestOptions({  headers: headers})).map(res=>res.json());
+    		return this.http.get(config.userIP+'/allUsers', new RequestOptions({  headers: headers})).map(res=>res.json());
 
 	}  
 
 	acceptuser(accepteduser):any{
 		let headers = new Headers();
-            headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+            headers.append('Authorization', config.auth);
             headers.append('Content-Type', 'application/json')
-         return this.http.post(this.api.userUrl+ '/admin/confirmAdmin', JSON.stringify(accepteduser), new RequestOptions({  headers: headers}))
+         return this.http.post(config.userIP+ '/admin/confirmAdmin', JSON.stringify(accepteduser), new RequestOptions({  headers: headers}))
                 .map(res => {return res})
 	} 	
 }

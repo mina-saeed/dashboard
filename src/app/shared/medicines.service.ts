@@ -3,6 +3,7 @@ import {Router} from '@angular/router'
 import {Http , Headers , RequestOptions} from '@angular/http'
 import 'rxjs/add/operator/map' 
 import {api} from './api.service'
+var config = JSON.parse(JSON.stringify(require('../../config.json')));
 
 
 @Injectable()
@@ -15,19 +16,19 @@ export class medicineService {
 	getAllMedicines():any{
 		
 		let headers = new Headers();
-    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+    		headers.append('Authorization', config.auth);
     		headers.append('Content-Type', 'application/json')
 
-		return this.http.get(this.api.medicineUrl+'all' ,new RequestOptions({headers: headers})).map(res=>res.json())
+		return this.http.get(config.medicineIP+'all' ,new RequestOptions({headers: headers})).map(res=>res.json())
 	}
 
 	addMedicine(medicine){
 
 		let headers = new Headers();
-    		headers.append('Authorization', 'Basic YWRtaW46MTIzNDU2');
+    		headers.append('Authorization', config.auth);
     		headers.append('Content-Type', 'application/json')
 
-    		return this.http.post(this.api.medicineUrl+'new', JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
+    		return this.http.post(config.medicineIP+'new', JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
     			return res.status
     		})
 	}	
