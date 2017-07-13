@@ -1,15 +1,12 @@
 import {Injectable} from '@angular/core'
 import {Http, RequestOptions, Headers} from '@angular/http'
-import {api} from './api.service'
 var config = JSON.parse(JSON.stringify(require('../../config.json')));
 
 
 @Injectable()
 
 export class productService{
-
-	private url ="http://207.154.240.16:3005/"
-	constructor(private http: Http,private api :api){}
+	constructor(private http: Http){}
 
 	allProducts(){
 			let headers = new Headers();

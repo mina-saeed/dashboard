@@ -2,16 +2,13 @@ import {Injectable} from '@angular/core'
 import {Router} from '@angular/router'
 import {Http , Headers , RequestOptions} from '@angular/http'
 import 'rxjs/add/operator/map' 
-import {api} from './api.service'
 var config = JSON.parse(JSON.stringify(require('../../config.json')));
 
 
 @Injectable()
 
 export class medicineService {
-	private url: string  = 'http://207.154.240.16:3004/';
-
-	constructor(private http: Http , private router: Router,private api :api){}
+	constructor(private http: Http , private router: Router){}
 
 	getAllMedicines():any{
 		

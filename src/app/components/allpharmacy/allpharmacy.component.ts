@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { pharmacy} from '../shared/pharmacy.service'
+import { pharmacy} from '../../shared/pharmacy.service'
 
 @Component({
   selector: 'app-allpharmacy',

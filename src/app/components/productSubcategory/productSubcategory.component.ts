@@ -1,5 +1,5 @@
 import {Component , OnInit} from '@angular/core'
-import {productCategoryService} from '../shared/productCategory.service'
+import {productCategoryService} from '../../shared/productCategory.service'
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

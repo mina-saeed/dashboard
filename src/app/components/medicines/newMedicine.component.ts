@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { medicineService } from '../shared/medicines.service'
-import { categoryService } from '../shared/categories.service'
+import { medicineService } from '../../shared/medicines.service'
+import { categoryService } from '../../shared/categories.service'
 import { Router } from '@angular/router'
 @Component({
 

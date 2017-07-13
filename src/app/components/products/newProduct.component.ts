@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {Router} from '@angular/router'
-import {productService} from '../shared/products.service'
-import {productCategoryService} from '../shared/productCategory.service'
+import {productService} from '../../shared/products.service'
+import {productCategoryService} from '../../shared/productCategory.service'
 
 
 @Component({

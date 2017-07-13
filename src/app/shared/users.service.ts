@@ -1,15 +1,13 @@
 import {Injectable} from '@angular/core'
 import {Router} from '@angular/router'
 import { Http ,Headers ,RequestOptions,Response } from '@angular/http'
-import {api} from './api.service'
 var config = JSON.parse(JSON.stringify(require('../../config.json')));
 
 import 'rxjs/add/operator/map'
 @Injectable()
 export class users {
 	private user: any;
-	private url = 'http://207.154.240.16:3001'
-	constructor(private http: Http , private router: Router,private api :api){
+	constructor(private http: Http , private router: Router){
 
 	}
 	getUser(user_email , user_password ,request_token):any {

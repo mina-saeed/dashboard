@@ -2,17 +2,12 @@ import {Injectable} from '@angular/core'
 import {Router} from '@angular/router'
 import {Http , Headers , RequestOptions} from '@angular/http'
 import 'rxjs/add/operator/map' 
-import {api} from './api.service'
 var config = JSON.parse(JSON.stringify(require('../../config.json')));
-//var myIP = JSON.stringify(IP);
-//var ip = JSON.parse(myIP)
+
 @Injectable()
 
 export class categoryService {
-	private url: string  = 'http://207.154.240.16:3006/';
-    
-
-	constructor(private http: Http , private router: Router,private api :api){}
+	constructor(private http: Http , private router: Router){}
 
 	getAllCategories():any{
 		

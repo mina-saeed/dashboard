@@ -1,30 +1,31 @@
 import {NgModule} from '@angular/core'
 import {RouterModule ,Routes} from '@angular/router'
 import { ChartsModule } from 'ng2-charts';
-import {home} from '../home.component'
-import {login} from '../login.component'
-import {logout} from '../logout.component'
-import {medicines} from '../medicines/medicines.component'
-import {newMedicine} from '../medicines/newMedicine.component'
-import {products} from '../products/products.component'
-import {newProduct} from '../products/newProduct.component'
-import {categories} from '../categories/categories.component'
-import {newCategory} from '../categories/newCategory.component'
-import {productCategory} from '../productCategory/productCategory.component'
-import {newProductCategory} from '../productCategory/newProductCategory.component'
+
 import {userGuard} from '../guards/user.guard'
 import {users} from '../shared/users.service'
-import {api} from '../shared/api.service'
 import {pharmacy} from '../shared/pharmacy.service'
 import {deactivateGuard} from '../guards/deactivate.guard'
-import {allusers} from '../allusers/allusers.component'
-import {sidebar} from '../sidebar.component'
-import { AllpharmacyComponent } from '../allpharmacy/allpharmacy.component';
-import {subcategory} from '../subcategory/subcategory.component'
-import {newSubcategory} from '../subcategory/newSubcategory.component'
-import {productSubcategory} from '../productSubcategory/productSubcategory.component'
-import {newproductSubcategory} from '../productSubcategory/newproductSubcategory.component'
-import {LineChartDemoComponent} from '../chart/chart.component'
+
+import {home} from '../components/home/home.component'
+import {login} from '../components/login/login.component'
+import {logout} from '../components/logout/logout.component'
+import {medicines} from '../components/medicines/medicines.component'
+import {newMedicine} from '../components/medicines/newMedicine.component'
+import {products} from '../components/products/products.component'
+import {newProduct} from '../components/products/newProduct.component'
+import {categories} from '../components/categories/categories.component'
+import {newCategory} from '../components/categories/newCategory.component'
+import {productCategory} from '../components/productCategory/productCategory.component'
+import {newProductCategory} from '../components/productCategory/newProductCategory.component'
+import {allusers} from '../components/allusers/allusers.component'
+import {sidebar} from '../components/sidebar/sidebar.component'
+import { AllpharmacyComponent } from '../components/allpharmacy/allpharmacy.component';
+import {subcategory} from '../components/subcategory/subcategory.component'
+import {newSubcategory} from '../components/subcategory/newSubcategory.component'
+import {productSubcategory} from '../components/productSubcategory/productSubcategory.component'
+import {newproductSubcategory} from '../components/productSubcategory/newproductSubcategory.component'
+import {LineChartDemoComponent} from '../components/chart/chart.component'
 
 const componentRoutes: Routes =[
 	
@@ -135,7 +136,7 @@ const componentRoutes: Routes =[
 	],
 
 	providers: [
-		userGuard,users,deactivateGuard,pharmacy,api
+		userGuard,users,deactivateGuard,pharmacy
 	],
 	exports:[
 		RouterModule
