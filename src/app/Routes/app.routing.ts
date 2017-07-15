@@ -26,6 +26,7 @@ import {newSubcategory} from '../components/subcategory/newSubcategory.component
 import {productSubcategory} from '../components/productSubcategory/productSubcategory.component'
 import {newproductSubcategory} from '../components/productSubcategory/newproductSubcategory.component'
 import {LineChartDemoComponent} from '../components/chart/chart.component'
+import {locations} from '../components/locations/locations.component'
 
 const componentRoutes: Routes =[
 	
@@ -125,6 +126,11 @@ const componentRoutes: Routes =[
 			   component: LineChartDemoComponent,
 			   canActivate: [userGuard]
 
+			},
+			{
+				path: 'locations',
+				component: locations,
+				canActivate: [userGuard]
 			}
 		]
 
@@ -162,5 +168,6 @@ export const RoutingComponents =[
 									newSubcategory,
 									productSubcategory,
 									newproductSubcategory,
-									LineChartDemoComponent
+									LineChartDemoComponent,
+									locations
 								]
