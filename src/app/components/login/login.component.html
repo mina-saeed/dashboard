@@ -72,6 +72,12 @@
                 Please Enter Password
               </div>
               </div>
+                          <div>
+                <input type="password" class="form-control" #regPass2="ngModel" id="reg_password2" name="reg_password2" placeholder="Confirm Password" required ngModel />
+                              <div [hidden]="regPass.valid || regPass.untouched" class="alert alert-danger">
+                Please confirm Password
+              </div>
+              </div>
 
               <div>
                 <button class="btn btn-default submit" [disabled]="!registerForm.valid" >Submit</button>

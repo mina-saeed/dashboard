@@ -11,6 +11,7 @@ export class locations {
     private locations = [];
     private initial: String = '';
     private type: Boolean = false;
+    private table: Boolean = false;
     constructor() { }
 
     ngOnInit() {
@@ -28,5 +29,6 @@ export class locations {
 
     OnchangeAR(area){
         console.log(area)
+        this.table = true;
     }
 }
