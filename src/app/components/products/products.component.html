@@ -40,6 +40,8 @@
                           <th>Category</th>
                           <th>Pharmacy </th>
                           <th>Price</th>
+                          <th>Update</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
 
@@ -53,7 +55,9 @@
                       		<td>{{product.description.english_description}}</td>
                       		<td>{{product.category}}</td>
                       		<td>{{product.pharmacyID}}</td>
-                      		<td>{{product.price}}</td>
+                          <td>{{product.price}}</td>
+                          <td><input type="button" (click)="update(product._id)" value="Update" class="btn btn-warning"></td>
+                          <td><input type="button" (click)="delete(product._id)" value="Delete" class="btn btn-danger"></td>
                       	</tr>
                       </tbody>
                     </table>

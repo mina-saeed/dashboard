@@ -14,6 +14,7 @@ import {medicines} from '../components/medicines/medicines.component'
 import {newMedicine} from '../components/medicines/newMedicine.component'
 import {products} from '../components/products/products.component'
 import {newProduct} from '../components/products/newProduct.component'
+import {updateProduct} from '../components/products/updateProduct.component'
 import {categories} from '../components/categories/categories.component'
 import {newCategory} from '../components/categories/newCategory.component'
 import {productCategory} from '../components/productCategory/productCategory.component'
@@ -137,6 +138,11 @@ const componentRoutes: Routes =[
 				path: 'updateMedicine/:id',
 				component: updatemedicine,
 				canActivate: [userGuard]
+			},			
+			{
+				path: 'updateProduct/:id',
+				component: updateProduct,
+				canActivate: [userGuard]
 			}
 		]
 
@@ -177,5 +183,6 @@ export const RoutingComponents =[
 									newproductSubcategory,
 									LineChartDemoComponent,
 									locations,
-									updatemedicine
+									updatemedicine,
+									updateProduct
 								]

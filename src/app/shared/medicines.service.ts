@@ -34,19 +34,21 @@ export class medicineService {
 		let headers = new Headers();
     		headers.append('Authorization', config.auth);
     		headers.append('Content-Type', 'application/json')
+		let myparams: URLSearchParams = new URLSearchParams();
+		myparams.set('id',id);
 
-			return this.http.delete(config.medicineIP+'deleteMedicine/'+id,new RequestOptions({headers: headers})).map(res=>{
+			return this.http.delete(config.medicineIP+'deleteMedicine',new RequestOptions({headers: headers,params:myparams})).map(res=>{
 				return res.status
 			})
 
 	}
 
-	updateMedicine(medicine,id){
+	updateMedicine(medicine){
 		let headers = new Headers();
     		headers.append('Authorization', config.auth);
     		headers.append('Content-Type', 'application/json')
 
-    		return this.http.put(config.medicineIP+'updateMedicine/'+id, JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
+    		return this.http.put(config.medicineIP+'updateMedicine', JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
     			return res.status
     		})
 	}
