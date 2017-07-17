@@ -28,5 +28,26 @@ export class medicineService {
     		return this.http.post(config.medicineIP+'new', JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
     			return res.status
     		})
-	}	
+	}
+		
+	deleteMedicine(id){
+		let headers = new Headers();
+    		headers.append('Authorization', config.auth);
+    		headers.append('Content-Type', 'application/json')
+
+			return this.http.delete(config.medicineIP+'deleteMedicine/'+id,new RequestOptions({headers: headers})).map(res=>{
+				return res.status
+			})
+
+	}
+
+	updateMedicine(medicine,id){
+		let headers = new Headers();
+    		headers.append('Authorization', config.auth);
+    		headers.append('Content-Type', 'application/json')
+
+    		return this.http.put(config.medicineIP+'updateMedicine/'+id, JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
+    			return res.status
+    		})
+	}
 }

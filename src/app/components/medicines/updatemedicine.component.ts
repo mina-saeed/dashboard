@@ -2,20 +2,23 @@ import { Component, OnInit } from '@angular/core'
 import { medicineService } from '../../shared/medicines.service'
 import { categoryService } from '../../shared/categories.service'
 import { Router } from '@angular/router'
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 
-	templateUrl: 'newMedicine.component.html',
+	templateUrl: 'updatemedicine.component.html',
 	providers: [medicineService, categoryService]
 
 })
 
-export class newMedicine implements OnInit{
+export class updatemedicine implements OnInit{
+    private id: String;
 	private allCategories = []
 	private type: Boolean = false;
 	private fixedprice :String = 'Yes';
-	constructor(private medicine: medicineService, private router: Router, private categoryObj: categoryService,private flash:FlashMessagesService) { }
+	constructor(private medicine: medicineService, private router: Router,private route: ActivatedRoute, private categoryObj: categoryService) { 
+         this.id = route.snapshot.params['id'];
+    }
 	ngOnInit() {
 		this.categoryObj.getAllCategories().subscribe(res => {
 			this.allCategories = res
@@ -24,10 +27,9 @@ export class newMedicine implements OnInit{
 
 	}
 
-	addNew(medicineFormData) {
-		this.medicine.addMedicine(medicineFormData).subscribe(res => {
+	update(medicineFormData) {
+		this.medicine.updateMedicine(medicineFormData,this.id).subscribe(res => {
 			if (res) {
-				this.flash.show('Medicine added Successfully', { cssClass: 'alert-success', timeout: 3000 })
 				this.router.navigate(['/medicines'])
 			}
 		})

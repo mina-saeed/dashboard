@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { pharmacy} from '../../shared/pharmacy.service'
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-allpharmacy',
@@ -8,7 +9,7 @@ import { pharmacy} from '../../shared/pharmacy.service'
 })
 export class AllpharmacyComponent implements OnInit {
 
- constructor(private pharmacy: pharmacy) { }
+ constructor(private pharmacy: pharmacy,private flashMessage: FlashMessagesService) { }
 		private allpharma =[] 
     private pharmacategory =[]
 
@@ -26,7 +27,7 @@ export class AllpharmacyComponent implements OnInit {
 
     Onacceptpharma(pharmaemail,index){
       if(this.pharmacategory.length ==0){
-        //this.flashMessage.show('Please select a type', { cssClass: 'alert-danger', timeout: 3000 });
+        this.flashMessage.show('Please select a type', { cssClass: 'alert-danger', timeout: 3000 });
         return false;
     }
       else{
@@ -37,6 +38,7 @@ export class AllpharmacyComponent implements OnInit {
       }
       this.pharmacy.acceptpharma(acceptedpharma).subscribe(res=>{
         if(res){
+		    this.flashMessage.show('Product Subcategory added Successfully', { cssClass: 'alert-success', timeout: 3000 })
           location.reload();
         }
       })

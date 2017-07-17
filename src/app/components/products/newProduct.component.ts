@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core'
 import {Router} from '@angular/router'
 import {productService} from '../../shared/products.service'
 import {productCategoryService} from '../../shared/productCategory.service'
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {productCategoryService} from '../../shared/productCategory.service'
 
 export class newProduct implements OnInit{
 	private allProductCategories =[] 
-	constructor(private product: productService,private productcategoryObj: productCategoryService,private router: Router){}
+	constructor(private product: productService,private productcategoryObj: productCategoryService,private router: Router,private flash:FlashMessagesService){}
 	
 	ngOnInit(){
 			 this.productcategoryObj.getAllCategories().subscribe(res=>{
@@ -25,6 +26,7 @@ export class newProduct implements OnInit{
 	addProduct(productForm){
 		this.product.addProduct(productForm).subscribe(res=>{
 		if(res){
+		    this.flash.show('Product added Successfully', { cssClass: 'alert-success', timeout: 3000 })
 			this.router.navigate(['/products'])
 		}
 	})

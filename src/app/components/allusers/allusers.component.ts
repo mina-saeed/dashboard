@@ -26,7 +26,7 @@ export class allusers implements OnInit {
 
     Onacceptuser(useremail,index){
       if(this.usertype.length ==0){
-        //this.flashMessage.show('Please select a type', { cssClass: 'alert-danger', timeout: 3000 });
+        this.flashMessage.show('Please select a type', { cssClass: 'alert-danger', timeout: 3000 });
         return false;
     }
       else{
@@ -36,7 +36,8 @@ export class allusers implements OnInit {
         type: this.usertype[index]
       }
       this.user.acceptuser(accepteduser).subscribe(res => {
-                      location.reload();
+		    this.flashMessage.show('User successfully confirmed', { cssClass: 'alert-success', timeout: 3000 })                     
+        location.reload();
               });
         
     }
