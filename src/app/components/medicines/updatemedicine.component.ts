@@ -3,6 +3,7 @@ import { medicineService } from '../../shared/medicines.service'
 import { categoryService } from '../../shared/categories.service'
 import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
 
@@ -16,7 +17,8 @@ export class updatemedicine implements OnInit {
 	private allCategories = []
 	private type: Boolean = false;
 	private fixedprice: String = 'Yes';
-	constructor(private medicine: medicineService, private router: Router, private route: ActivatedRoute, private categoryObj: categoryService) {
+	constructor(private medicine: medicineService, private router: Router, private route: ActivatedRoute,
+		 private categoryObj: categoryService,private flashMessage: FlashMessagesService) {
 		this.id = route.snapshot.params['id'];
 	}
 	ngOnInit() {
@@ -32,6 +34,7 @@ export class updatemedicine implements OnInit {
 		medicineFormDataID.id = this.id+'';
 		this.medicine.updateMedicine(medicineFormDataID).subscribe(res => {
 			if (res) {
+      		    this.flashMessage.show('Medicine updated successfully', { cssClass: 'alert-success', timeout: 3000 })                     
 				this.router.navigate(['/medicines'])
 			}
 		})

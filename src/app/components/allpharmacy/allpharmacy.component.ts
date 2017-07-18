@@ -38,7 +38,7 @@ export class AllpharmacyComponent implements OnInit {
       }
       this.pharmacy.acceptpharma(acceptedpharma).subscribe(res=>{
         if(res){
-		    this.flashMessage.show('Product Subcategory added Successfully', { cssClass: 'alert-success', timeout: 3000 })
+		    this.flashMessage.show('Pharmacy ia accepted Successfully', { cssClass: 'alert-success', timeout: 3000 })
           location.reload();
         }
       })
