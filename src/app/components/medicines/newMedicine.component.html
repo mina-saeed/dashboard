@@ -1,3 +1,33 @@
+<script src="../../../../node_modules/quagga/dist/quagga.min.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="barcode.js"></script>
+
+<style>
+  #barcodevideo, #barcodecanvas, #barcodecanvasg {
+	height: 400px;
+}	
+
+#barcodecanvasg {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#result {
+	font-family: verdana;
+	font-size: 1.5em;
+}
+
+#barcode {
+	position: relative;
+}	
+
+#barcodecanvas {
+	display: none;
+}
+</style>
+
+
 <body class="nav-md">
       <div class="container body">
       <div class="main_container">
@@ -29,7 +59,15 @@
                   <div class="x_content">
 
                     <form class="form-horizontal form-label-left" #medicineForm ="ngForm" (ngSubmit)="addNew(medicineForm.value)" novalidate >
-                      <span class="section">Medicine Barcode</span>                    
+                      <span class="section">Medicine Barcode</span>
+              
+                      <div id="barcode">
+	<video id="barcodevideo" autoplay="true"></video>
+	<canvas id="barcodecanvasg" ></canvas>
+</div>
+<canvas id="barcodecanvas" ></canvas>
+<div id="result"></div>
+
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Barcode <span class="required">*</span>
                         </label>

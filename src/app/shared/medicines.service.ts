@@ -35,6 +35,7 @@ export class medicineService {
     		headers.append('Authorization', config.auth);
     		headers.append('Content-Type', 'application/json')
 		let myparams: URLSearchParams = new URLSearchParams();
+		console.log(id);
 		myparams.set('id',id);
 
 			return this.http.delete(config.medicineIP+'deleteMedicine',new RequestOptions({headers: headers,params:myparams})).map(res=>{

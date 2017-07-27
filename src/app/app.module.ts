@@ -6,6 +6,7 @@ import { AppComponent } from './components/app/app.component';
 import {routes, RoutingComponents} from './Routes/app.routing';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ChartsModule } from 'ng2-charts';
+import Quagga from 'quagga';
 
 
 @NgModule({

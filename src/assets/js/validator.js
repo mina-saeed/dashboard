@@ -7,7 +7,7 @@
 */
 
 var validator = (function($){
-    var message, tests, checkField, validate, mark, unmark, field, minmax, defaults,
+    var message, tests, checkfield, validate, mark, unmark, field, minmax, defaults,
         validateWords, lengthRange, lengthLimit, pattern, alertTxt, data,
         email_illegalChars = /[\(\)\<\>\,\;\:\\\/\"\[\]]/,
         email_filter = /^.+@.+\..{2,6}$/;  // exmaple email "steve@s-i.photo"
@@ -392,7 +392,7 @@ var validator = (function($){
 
         fieldsToCheck.each(function(){
             // use an AND operation, so if any of the fields returns 'false' then the submitted result will be also FALSE
-            submit = submit * checkField.apply(this);
+            submit = submit * checkfield.apply(this);
         });
 
         return !!submit;  // casting the variable to make sure it's a boolean
