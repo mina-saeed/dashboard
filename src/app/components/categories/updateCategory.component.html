@@ -15,7 +15,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add New ProductCategory </h3>
+                <h3>Add New Medicine </h3>
               </div>
 
               </div>
@@ -28,7 +28,7 @@
 
                   <div class="x_content">
 
-                    <form class="form-horizontal form-label-left" #categoryForm ="ngForm" (ngSubmit)="addNew(categoryForm.value)" novalidate >
+                    <form class="form-horizontal form-label-left" #categoryForm ="ngForm" (ngSubmit)="updateCategory(categoryForm.value)" novalidate >
 
                       <span class="section">Category Name</span>
                     <div ngModelGroup="name">   
@@ -104,7 +104,5 @@
           </div>
         </div>
         <!-- /page content -->
-        <div>
-      </div>
       </div>
 </body>
