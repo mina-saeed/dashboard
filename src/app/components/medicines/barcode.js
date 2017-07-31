@@ -353,4 +353,5 @@ var barcode = function() {
 	}
 
 }();
+
 module.exports = barcode

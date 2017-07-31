@@ -6,7 +6,6 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import Quagga from 'quagga';
 import * as $ from 'jquery';
 import * as barcode from './barcode.js'
-var sound = new Audio("./barcode.wav");
 
 @Component({
 
@@ -27,10 +26,11 @@ export class newMedicine implements OnInit {
             this.allCategories = res
             return this.allCategories
         })
+    var sound = new Audio("./src/app/components/medicines/barcode.wav");
 
 
         $(document).ready(function () {
-
+            console.log('da5al')
             barcode.config.start = 0.1;
             barcode.config.end = 0.9;
             barcode.config.video = '#barcodevideo';
@@ -38,6 +38,7 @@ export class newMedicine implements OnInit {
             barcode.config.canvasg = '#barcodecanvasg';
             barcode.setHandler(function (barcode) {
                 $('#result').html(barcode);
+                console.log(barcode)
             });
             barcode.init();
 

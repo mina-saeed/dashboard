@@ -17,10 +17,8 @@ import {newProduct} from '../components/products/newProduct.component'
 import {updateProduct} from '../components/products/updateProduct.component'
 import {categories} from '../components/categories/categories.component'
 import {newCategory} from '../components/categories/newCategory.component'
-import {updateCategory} from '../components/categories/updateCategory.component'
 import {productCategory} from '../components/productCategory/productCategory.component'
 import {newProductCategory} from '../components/productCategory/newProductCategory.component'
-import {updateProductCategory} from '../components/productCategory/updateProductCategory.component'
 import {allusers} from '../components/allusers/allusers.component'
 import {sidebar} from '../components/sidebar/sidebar.component'
 import {topnav} from '../components/sidebar/topnav.component'
@@ -145,18 +143,7 @@ const componentRoutes: Routes =[
 				path: 'updateProduct/:id',
 				component: updateProduct,
 				canActivate: [userGuard]
-			},			
-			{
-				path: 'updatCategory/:id',
-				component: updateCategory,
-				canActivate: [userGuard]
-			},
-			{
-				path: 'updateProductCategory/:id',
-				component: updateProductCategory,
-				canActivate: [userGuard]
 			}
-
 		]
 
 
@@ -197,7 +184,5 @@ export const RoutingComponents =[
 									LineChartDemoComponent,
 									locations,
 									updatemedicine,
-									updateProduct,
-									updateCategory,
-									updateProductCategory
+									updateProduct
 								]
