@@ -34,6 +34,8 @@
                           <th>Description</th>
                           <th>Show Subcategories</th>
                           <th>Add Subcategories</th>
+                          <th>Update</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let category of allCategories">
@@ -42,7 +44,9 @@
                       		<td>{{category.description.english_description}}</td>
                           <td><input type="button" (click)="showsub(category._id)" value="Show" class="btn btn-primary"></td>
                           <td><input type="button" (click)="addnew(category._id)" value="Add" class="btn btn-primary"></td>
-                      	</tr>
+                          <td><input type="button" (click)="update(category._id)" value="Update" class="btn btn-warning"></td>
+                          <td><input type="button" (click)="delete(category._id)" value="Delete" class="btn btn-danger"></td>
+                        </tr>
                       </tbody>
                     </table>
               </div>
