@@ -47,4 +47,16 @@ export class productService{
     		})
 	}
 
+	store(product){
+		localStorage.setItem('product', JSON.stringify(product));
+	}
+
+	retreive(){
+		return localStorage.getItem('product');
+	}
+	
+	clear(){
+		localStorage.removeItem('product');
+	}
+
 }

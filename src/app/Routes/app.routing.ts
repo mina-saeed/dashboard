@@ -137,14 +137,14 @@ const componentRoutes: Routes =[
 				canActivate: [userGuard]
 			},
 			{
-				path: 'updateMedicine/:id',
+				path: 'updateMedicine',
 				component: updatemedicine,
-				canActivate: [userGuard]
+				canActivate: [userGuard],
 			},			
 			{
-				path: 'updateProduct/:id',
+				path: 'updateProduct',
 				component: updateProduct,
-				canActivate: [userGuard]
+				canActivate: [userGuard],
 			},			
 			{
 				path: 'updatCategory/:id',

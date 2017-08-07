@@ -53,4 +53,16 @@ export class medicineService {
     			return res.status
     		})
 	}
+
+	store(medicine){
+		localStorage.setItem('medicine', JSON.stringify(medicine));
+	}
+
+	retreive(){
+		return localStorage.getItem('medicine');
+	}
+	
+	clear(){
+		localStorage.removeItem('medicine');
+	}
 }

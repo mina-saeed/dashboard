@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { medicineService } from '../../shared/medicines.service'
 import { categoryService } from '../../shared/categories.service'
 import { Router } from '@angular/router'
-import { ActivatedRoute } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
@@ -13,27 +12,43 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 
 export class updatemedicine implements OnInit {
-	private id: String;
+	private oldmedicine: any
 	private allCategories = []
-	private type: Boolean = false;
-	private fixedprice: String = 'Yes';
-	constructor(private medicine: medicineService, private router: Router, private route: ActivatedRoute,
+	private type: Boolean = true;
+	private fixedprice: String = 'No';
+	oldbar: string
+	oldengname: string
+	oldarbname: string
+	oldengdesc: string
+	oldarbdesc: string
+	oldmilli: string
+	oldprice: string
+	category: string
+	constructor(private medicine: medicineService, private router: Router,
 		 private categoryObj: categoryService,private flashMessage: FlashMessagesService) {
-		this.id = route.snapshot.params['id'];
-	}
+		 }
 	ngOnInit() {
-		this.categoryObj.getAllCategories().subscribe(res => {
+		this.oldmedicine = JSON.parse ((this.medicine.retreive()));
+		this.oldbar = this.oldmedicine.barcode
+		this.oldengname = this.oldmedicine.name.name_english
+		this.oldarbname = this.oldmedicine.name.name_ar
+		this.oldengdesc = this.oldmedicine.description.english_description
+		this.oldarbdesc = this.oldmedicine.description.arabic_description
+		this.oldmilli = this.oldmedicine.milligrams
+		this.oldprice = this.oldmedicine.price
+		this.category = this.oldmedicine.category
+		console.log(this.oldmedicine.barcode)
+		/*this.categoryObj.getAllCategories().subscribe(res => {
 			this.allCategories = res
-			return this.allCategories
-		})
-
+		})*/
 	}
 
 	update(medicineFormData) {
 		var medicineFormDataID:medicine = medicineFormData
-		medicineFormDataID.id = this.id+'';
+		medicineFormDataID.id = this.oldmedicine._id
 		this.medicine.updateMedicine(medicineFormDataID).subscribe(res => {
 			if (res) {
+				this.medicine.clear();
       		    this.flashMessage.show('Medicine updated successfully', { cssClass: 'alert-success', timeout: 3000 })                     
 				this.router.navigate(['/medicines'])
 			}
@@ -41,13 +56,14 @@ export class updatemedicine implements OnInit {
 	}
 
 	Onchange(fixed) {
-		if (fixed == 'No') {
+		if (fixed == 'NO') {
 			this.type = true;
 		}
 		else {
 			this.type = false;
 		}
 	}
+
 
 
 }

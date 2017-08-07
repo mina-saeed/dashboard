@@ -27,7 +27,8 @@ export class products implements OnInit{
 			});
 		}
 
-	update(id){
-			this.router.navigate(['/updateProduct/'+id]);
+	update(product){
+			this.prod.store(product)
+			this.router.navigate(['/updateProduct']);
 		}
 }

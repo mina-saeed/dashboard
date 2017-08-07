@@ -30,8 +30,9 @@ export class medicines implements OnInit{
 			});
 		}
 
-		update(id){
-			this.router.navigate(['/updateMedicine/'+id]);
+		update(medicine){
+			this.medicineObj.store(medicine)
+			this.router.navigate(['/updateMedicine']);
 		}
 
 }
