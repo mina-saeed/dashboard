@@ -22,8 +22,8 @@ export class newProduct implements OnInit {
 	category: string
 	subCategory: string
 	pharmacyID: string
-	fileList: FileList;
-    formData: FormData = new FormData();
+	filesToUpload: Array<File> = [];
+
 
 	constructor(private product: productService, private productcategoryObj: productCategoryService, private router: Router, private flash: FlashMessagesService) { }
 
@@ -36,22 +36,15 @@ export class newProduct implements OnInit {
 	}
 
 	fileChange(event) {
-		this.fileList = event.target.files;
-		console.log(this.fileList)
+    this.filesToUpload = <Array<File>>event.target.files;
 	}
 
 	addProduct() {
-         /* this.product.addProduct(productFormData).subscribe(res => {
-            if (res) {
-                this.flash.show('Product added Successfully', { cssClass: 'alert-success', timeout: 3000 })
-                this.router.navigate(['/products'])
-            }
-        })
-	}*/
+  if (this.filesToUpload.length> 0) {
+	  const files: Array<File> = this.filesToUpload;
+	  const formData= new FormData();
 
-  if (this.fileList.length > 0) {
-      let file: File = this.fileList[0];
-	  this.formData.append('image', file);
+      formData.append("image", files[0], files[0]['name']);
 	
 	var name = {
 		name_ar: this.arbname,
@@ -62,17 +55,17 @@ export class newProduct implements OnInit {
 		arabic_description: this.arbdesc
 	}
 
-	this.formData.append('name',JSON.stringify(name))
-	this.formData.append('description',JSON.stringify(description))
-	this.formData.append('price',this.price)
-	this.formData.append('barcode',this.bar)
-	this.formData.append('category',this.category)
-	this.formData.append('pharmacyID',this.pharmacyID)
-	console.log(this.formData.get('name'))
-		this.product.addProduct(this.formData).subscribe(res => {
+	formData.append('name',this.engname)
+	formData.append('description',this.engdesc)
+	formData.append('price',this.price)
+	formData.append('barcode',this.bar)
+	formData.append('category',this.category)
+	formData.append('pharmacyID',this.pharmacyID)
+		this.product.addProduct(formData).subscribe(res => {
 			if (res) {
-				this.flash.show('Product added Successfully', { cssClass: 'alert-success', timeout: 3000 })
 				this.router.navigate(['/products'])
+				this.flash.show('Product added Successfully', { cssClass: 'alert-success', timeout: 3000 })
+
 			}
 		})
 	}

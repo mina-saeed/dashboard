@@ -15,7 +15,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add New SubCategory </h3>
+                <h3>Add New Product Subcategory </h3>
               </div>
 
               </div>
@@ -28,62 +28,68 @@
 
                   <div class="x_content">
 
-                    <form class="form-horizontal form-label-left" #categoryForm ="ngForm" (ngSubmit)="addNew(categoryForm.value)" novalidate >
+                    <form class="form-horizontal form-label-left" #categoryForm ="ngForm" (ngSubmit)="addNew()" novalidate >
 
-                      <span class="section">Category Name</span>
+                      <span class="section">Subcategory Name</span>
                     <div ngModelGroup="name">   
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Name (English)<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="name_english" name="name_english" #nameEngRef ="ngModel" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="ex : new medicine" required ngModel>
+                          <input type="text" id="name_english" name="name_english" #nameEngRef ="ngModel" class="form-control col-md-7 col-xs-12" [(ngModel)]="engname" data-validate-length-range="6" data-validate-words="2" placeholder="ex : new medicine" required >
                         </div>
                       </div>
                           <div [hidden]="nameEngRef.valid || nameEngRef.untouched " class="alert alert-danger">
-                                Please Add Category name in English
+                                Please Add Subcategory name in English
                             </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Name (Arabic)<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="name_ar" name="name_ar" #nameArRef ="ngModel" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="مثال : دواء جديد" required  ngModel type="text">
+                          <input id="name_ar" name="name_ar" #nameArRef ="ngModel" class="form-control col-md-7 col-xs-12" [(ngModel)]="arbname" data-validate-length-range="6" data-validate-words="2" placeholder="مثال : دواء جديد" required   type="text">
                         </div>
                       </div>
                           <div [hidden]="nameArRef.valid || nameArRef.untouched " class="alert alert-danger">
-                                Please Add Category name in Arabic
+                                Please Add Subcategory name in Arabic
                             </div>
                             </div>  
                           <div ngModelGroup="description">                  
-                      <span class="section">Category Description</span>
+                      <span class="section">Subcategory Description</span>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Description (English)<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="english_description" name="english_description" #descEn ="ngModel" required ngModel class="form-control col-md-7 col-xs-12"></textarea>
+                          <textarea id="english_description" name="english_description" [(ngModel)]="engdesc" #descEn ="ngModel" required  class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
                       </div>
                           <div [hidden]="descEn.valid || descEn.untouched " class="alert alert-danger">
-                                Please Add Category Description in English
+                                Please Add Subcategory Description in English
                           </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Description (Arabic)<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="arabic_description" name="arabic_description" #descAr ="ngModel" required ngModel class="form-control col-md-7 col-xs-12"></textarea>
+                          <textarea id="arabic_description" name="arabic_description" [(ngModel)]="arbdesc" #descAr ="ngModel" required  class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
                       </div> 
                         <div [hidden]="descAr.valid || descAr.untouched " class="alert alert-danger">
-                                Please Add Category Description in Arabic
+                                Please Add Subcategory Description in Arabic
                         </div>
                         </div>                     
-
-                    <span class="section">Category Searchable</span>
+  <span class="section">Subcategory Image</span>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Image <span class="required">*</span>
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+ <input type="file" id="image" name="image"  (change)="fileChange($event)" accept="image/*" required >                        </div>
+                      </div>
+                    <span class="section">Subcategory Searchable</span>
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Searchable <span class="required">*</span>
                         </label>
                     <div class="btn-group">
                     <ul>
-                    <select class="form-control" name="searchable" ngModel>
+                    <select class="form-control" name="searchable" [(ngModel)]="search">
                         <option value="true">True</option>
                         <option value="False">False</option>
                     </select>
@@ -103,5 +109,8 @@
             </div>
           </div>
         </div>
+        <!-- /page content -->
+        <div>
+      </div>
       </div>
 </body>

@@ -23,9 +23,8 @@ export class productCategoryService {
 
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
-		headers.append('Content-Type', 'application/json')
 
-		return this.http.post(config.productcategoryIP + 'new', JSON.stringify(category), new RequestOptions({ headers: headers })).map(res => {
+		return this.http.post(config.productcategoryIP + 'new', category, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
 	}
@@ -42,9 +41,8 @@ export class productCategoryService {
 
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
-		headers.append('Content-Type', 'application/json')
 
-		return this.http.post(config.productcategoryIP + 'new', JSON.stringify(category), new RequestOptions({ headers: headers })).map(res => {
+		return this.http.post(config.productcategoryIP + 'new', category, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
 	}

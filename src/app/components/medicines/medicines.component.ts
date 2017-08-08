@@ -22,7 +22,7 @@ export class medicines implements OnInit{
 		}
 
 		delete(id){
-			this.medicineObj.deleteMedicine(id).subscribe(res=>{
+			this.medicineObj.deleteMedicine(id.toString()).subscribe(res=>{
 				if(res == 200){
 		        this.flashMessage.show('Medicine deleted successfully', { cssClass: 'alert-success', timeout: 3000 })                     
                 location.reload()	
