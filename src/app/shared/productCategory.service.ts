@@ -28,13 +28,13 @@ export class productCategoryService {
 			return res.status
 		})
 	}
-	getAllsubCategories(id): any {
+	getAllsubCategories(catID): any {
 
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
 
-		return this.http.get(config.productcategoryIP + 'all' + id, new RequestOptions({ headers: headers })).map(res => res.json())
+		return this.http.get(config.productcategoryIP + 'allSubCategories/' + catID, new RequestOptions({ headers: headers })).map(res => res.json())
 	}
 
 	addsubCategory(category) {
@@ -42,7 +42,7 @@ export class productCategoryService {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 
-		return this.http.post(config.productcategoryIP + 'new', category, new RequestOptions({ headers: headers })).map(res => {
+		return this.http.post(config.productcategoryIP + 'addSubCategory', category, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
 	}

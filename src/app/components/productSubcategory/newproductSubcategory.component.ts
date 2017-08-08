@@ -45,7 +45,7 @@ export class newproductSubcategory {
 			formData.append('name', this.engname)
 			formData.append('description', this.engdesc)
 			formData.append('searchable', this.search)
-			formData.append('id',this.categoryId)
+			formData.append('catID',this.categoryId)
 			this.category.addsubCategory(formData).subscribe(res => {
 				if (res) {
 					this.flash.show('Product Subcategory added Successfully', { cssClass: 'alert-success', timeout: 3000 })

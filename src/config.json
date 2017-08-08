@@ -4,7 +4,7 @@
     "medicineIP": "http://146.185.148.66:3004/",
     "productIP": "http://146.185.148.66:3005/",
     "categoryIP": "http://207.154.240.16:3006/",
-    "productcategoryIP": "http://207.154.240.16:3007/",
+    "productcategoryIP": "http://146.185.148.66:3007/",
 
     "auth": "Basic YWRtaW46MTIzNDU2"
 }
