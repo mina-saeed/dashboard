@@ -28,10 +28,12 @@ export class newProduct implements OnInit {
 	constructor(private product: productService, private productcategoryObj: productCategoryService, private router: Router, private flash: FlashMessagesService) { }
 
 	ngOnInit() {
-		/*this.productcategoryObj.getAllCategories().subscribe(res => {
+		this.productcategoryObj.getAllCategories().subscribe(res => {
 			this.allProductCategories = res
+			this.category = this.allProductCategories[0].name_en
+			this.pharmacyID = '1'
 			return this.allProductCategories
-		})*/
+		})
 
 	}
 
@@ -44,19 +46,11 @@ export class newProduct implements OnInit {
 	  const files: Array<File> = this.filesToUpload;
 	  const formData= new FormData();
 
-      formData.append("image", files[0], files[0]['name']);
-	
-	var name = {
-		name_ar: this.arbname,
-		name_english: this.engname
-	}
-	var description = {
-		english_description: this.engdesc,
-		arabic_description: this.arbdesc
-	}
-
-	formData.append('name',this.engname)
-	formData.append('description',this.engdesc)
+    formData.append("image", files[0], files[0]['name']);
+	formData.append('name_en',this.engname)
+	formData.append('name_ar',this.arbname)
+	formData.append('description_en',this.engdesc)
+	formData.append('description_ar',this.arbdesc)
 	formData.append('price',this.price)
 	formData.append('barcode',this.bar)
 	formData.append('category',this.category)

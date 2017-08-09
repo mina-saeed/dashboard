@@ -14,6 +14,7 @@ export class productCategory implements OnInit{
 
 		ngOnInit(){
 			 this.categoryObj.getAllCategories().subscribe(res=>{
+				 console.log(res)
 			 	this.allProductCategories = res
 			 	return this.allProductCategories
 			 })
@@ -39,8 +40,9 @@ export class productCategory implements OnInit{
 			});
 		}
 
-		update(id){
-			this.router.navigate(['/updateProductCategory/'+id]);
+		update(category){
+			this.categoryObj.store(category)
+			this.router.navigate(['/updateProductCategory']);
 		}
 
 }

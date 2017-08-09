@@ -1,34 +1,35 @@
-import {Component, OnInit} from '@angular/core'
-import {Router} from '@angular/router'
-import {productService} from '../../shared/products.service'
-import {productCategoryService} from '../../shared/productCategory.service'
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { productService } from '../../shared/products.service'
+import { productCategoryService } from '../../shared/productCategory.service'
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
 
-	templateUrl: 'updateProduct.component.html',
-	providers:[productService,productCategoryService]
+  templateUrl: 'updateProduct.component.html',
+  providers: [productService, productCategoryService]
 })
 
-export class updateProduct implements OnInit{
-    private allProductCategories =[] ;
-    oldproduct: any
-    	oldbar: string
-oldengname: string
-	oldarbname: string
-	oldengdesc: string
+export class updateProduct implements OnInit {
+  private allProductCategories = [];
+  oldproduct: any
+  oldbar: string
+  oldengname: string
+  oldarbname: string
+  oldengdesc: string
   oldarbdesc: string
   oldprice: string
   category: string
   subCategory: string
-    constructor(private product: productService,private productcategoryObj: productCategoryService,private router: Router,private flash:FlashMessagesService){
-     }
+  oldpharmacyID: string
+  filesToUpload: Array<File> = [];
+  constructor(private product: productService, private productcategoryObj: productCategoryService, private router: Router, private flash: FlashMessagesService) {
+  }
 
-	
-	ngOnInit(){
-    console.log(this.product.retreive())
-    		this.oldproduct = JSON.parse ((this.product.retreive()));
+
+  ngOnInit() {
+    this.oldproduct = JSON.parse((this.product.retreive()));
     this.oldbar = this.oldproduct.barcode
     this.oldengname = this.oldproduct.name.name_english
     this.oldarbname = this.oldproduct.name.name_ar
@@ -37,27 +38,49 @@ oldengname: string
     this.oldprice = this.oldproduct.price
     this.category = this.oldproduct.category
     this.subCategory = this.oldproduct.subCategory
-			 this.productcategoryObj.getAllCategories().subscribe(res=>{
-			 	this.allProductCategories = res
-			 	return this.allProductCategories
-			 })
+    this.oldpharmacyID = this.oldproduct.pharmacyID
+    this.productcategoryObj.getAllCategories().subscribe(res => {
+      this.allProductCategories = res
+      return this.allProductCategories
+    })
 
-		}
-	
-	updateProduct(productForm){
-        var productFormID:product = productForm;
-        productFormID.id = this.oldproduct._id;
-		this.product.updateProduct(productFormID).subscribe(res=>{
-		if(res){
-		    this.flash.show('Product updated Successfully', { cssClass: 'alert-success', timeout: 3000 })
-			this.router.navigate(['/products'])
-		}
-	})
-	}
+  }
+
+  fileChange(event) {
+    this.filesToUpload = <Array<File>>event.target.files;
+  }
+
+  updateProduct() {
+    if (this.filesToUpload.length > 0) {
+      const files: Array<File> = this.filesToUpload;
+      const formData = new FormData();
+
+      formData.append("image", files[0], files[0]['name']);
+      formData.append('name_en', this.oldengname)
+      formData.append('name_ar', this.oldarbname)
+      formData.append('description_en', this.oldengdesc)
+      formData.append('description_ar', this.oldarbdesc)
+      formData.append('price', this.oldprice)
+      formData.append('barcode', this.oldbar)
+      formData.append('category', this.category)
+      formData.append('pharmacyID', this.oldpharmacyID)
+      formData.append('id', this.oldproduct._id)
+
+      this.product.updateProduct(formData).subscribe(res => {
+        if (res) {
+          this.flash.show('Product updated Successfully', { cssClass: 'alert-success', timeout: 3000 })
+          this.router.navigate(['/products'])
+        }
+      })
+    }
+    else {
+
+    }
+  }
 }
 
-interface product{
-    
+interface product {
+
   id: string,
   name: {
     name_english: string,

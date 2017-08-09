@@ -39,9 +39,8 @@ console.log(product.get('barcode'))
 	updateProduct(product){
 		let headers = new Headers();
     		headers.append('Authorization', config.auth);
-    		headers.append('Content-Type', 'application/json')
 
-    		return this.http.put(config.productIP+'updateProduct', JSON.stringify(product), new RequestOptions({headers: headers})).map(res=>{
+    		return this.http.put(config.productIP+'updateProduct', product, new RequestOptions({headers: headers})).map(res=>{
     			return res.status
     		})
 	}

@@ -29,6 +29,7 @@ import {subcategory} from '../components/subcategory/subcategory.component'
 import {newSubcategory} from '../components/subcategory/newSubcategory.component'
 import {productSubcategory} from '../components/productSubcategory/productSubcategory.component'
 import {newproductSubcategory} from '../components/productSubcategory/newproductSubcategory.component'
+import {updateproductSubcategory} from '../components/productSubcategory/updateproductSubcategory.component'
 import {LineChartDemoComponent} from '../components/chart/chart.component'
 import {locations} from '../components/locations/locations.component'
 import {updatemedicine} from '../components/medicines/updatemedicine.component'
@@ -152,8 +153,13 @@ const componentRoutes: Routes =[
 				canActivate: [userGuard]
 			},
 			{
-				path: 'updateProductCategory/:id',
+				path: 'updateProductCategory',
 				component: updateProductCategory,
+				canActivate: [userGuard]
+			},
+			{
+				path: 'updateproductsubCategory/:id',
+				component: updateproductSubcategory,
 				canActivate: [userGuard]
 			}
 
@@ -199,5 +205,6 @@ export const RoutingComponents =[
 									updatemedicine,
 									updateProduct,
 									updateCategory,
-									updateProductCategory
+									updateProductCategory,
+									updateproductSubcategory
 								]

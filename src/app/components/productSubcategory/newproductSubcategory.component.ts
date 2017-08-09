@@ -17,7 +17,7 @@ export class newproductSubcategory {
 	arbname: string
 	engdesc: string
 	arbdesc: string
-	search: string
+	search: string = 'true'
 	filesToUpload: Array<File> = [];
 	constructor(private category: productCategoryService, private router: Router, private route: ActivatedRoute
 		, private flash: FlashMessagesService) {
@@ -33,17 +33,10 @@ export class newproductSubcategory {
 			const formData = new FormData();
 
 			formData.append("image", files[0], files[0]['name']);
-
-			var name = {
-				name_ar: this.arbname,
-				name_english: this.engname
-			}
-			var description = {
-				english_description: this.engdesc,
-				arabic_description: this.arbdesc
-			}
-			formData.append('name', this.engname)
-			formData.append('description', this.engdesc)
+			formData.append('name_ar', this.arbname)
+			formData.append('name_en', this.engname)
+			formData.append('description_en', this.engdesc)
+			formData.append('description_ar', this.arbdesc)
 			formData.append('searchable', this.search)
 			formData.append('catID',this.categoryId)
 			this.category.addsubCategory(formData).subscribe(res => {

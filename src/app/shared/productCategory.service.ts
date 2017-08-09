@@ -19,6 +19,14 @@ export class productCategoryService {
 		return this.http.get(config.productcategoryIP + 'all', new RequestOptions({ headers: headers })).map(res => res.json())
 	}
 
+	getAllsubCategories(catID): any {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+
+		return this.http.get(config.productcategoryIP + 'allSubCategories/' + catID, new RequestOptions({ headers: headers })).map(res => res.json())
+	}
+
 	addCategory(category) {
 
 		let headers = new Headers();
@@ -28,14 +36,7 @@ export class productCategoryService {
 			return res.status
 		})
 	}
-	getAllsubCategories(catID): any {
 
-		let headers = new Headers();
-		headers.append('Authorization', config.auth);
-		headers.append('Content-Type', 'application/json')
-
-		return this.http.get(config.productcategoryIP + 'allSubCategories/' + catID, new RequestOptions({ headers: headers })).map(res => res.json())
-	}
 
 	addsubCategory(category) {
 
@@ -61,13 +62,45 @@ export class productCategoryService {
 
 	}
 
-	updateCategory(category) {
+		deletesubCategory(id) {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
+		let myparams: URLSearchParams = new URLSearchParams();
+		console.log(id);
+		myparams.set('id', id);
 
-		return this.http.put(config.productcategoryIP + 'updateCategory', JSON.stringify(category), new RequestOptions({ headers: headers })).map(res => {
+		return this.http.delete(config.productcategoryIP + 'deleteSubcategory', new RequestOptions({ headers: headers, params: myparams })).map(res => {
 			return res.status
 		})
+
+	}
+
+	updateCategory(category) {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		return this.http.put(config.productcategoryIP + 'updateCategory', category, new RequestOptions({ headers: headers })).map(res => {
+			return res.status
+		})
+	}
+
+	updatesubCategory(category) {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		return this.http.put(config.productcategoryIP + 'updateSubcategory', category, new RequestOptions({ headers: headers })).map(res => {
+			return res.status
+		})
+	}
+
+	store(product) {
+		localStorage.setItem('product', JSON.stringify(product));
+	}
+
+	retreive() {
+		return localStorage.getItem('product');
+	}
+
+	clear() {
+		localStorage.removeItem('product');
 	}
 }
