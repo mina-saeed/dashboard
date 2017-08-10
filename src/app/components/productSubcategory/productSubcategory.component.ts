@@ -32,7 +32,7 @@ export class productSubcategory implements OnInit {
 
 	update(category) {
 		this.categoryObj.store(category)
-		this.router.navigate(['/updateproductsubCategory/' + this.paramName])
+		this.router.navigate(['/updateproductsubCategory'])
 	}
 
 	delete(id) {

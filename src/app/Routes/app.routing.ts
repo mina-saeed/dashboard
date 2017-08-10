@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core'
 import {RouterModule ,Routes} from '@angular/router'
 import { ChartsModule } from 'ng2-charts';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import {userGuard} from '../guards/user.guard'
 import {users} from '../shared/users.service'
@@ -158,7 +159,7 @@ const componentRoutes: Routes =[
 				canActivate: [userGuard]
 			},
 			{
-				path: 'updateproductsubCategory/:id',
+				path: 'updateproductsubCategory',
 				component: updateproductSubcategory,
 				canActivate: [userGuard]
 			}
@@ -169,7 +170,7 @@ const componentRoutes: Routes =[
 @NgModule({
 
 	imports:[
-		RouterModule.forRoot(componentRoutes),ChartsModule
+		RouterModule.forRoot(componentRoutes),ChartsModule,NgxPaginationModule
 	],
 
 	providers: [

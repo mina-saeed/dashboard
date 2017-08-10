@@ -99,27 +99,30 @@
 
 
                 <div class="col-md-5 col-md-offset-0">
+                  <ul>
+                    <ul *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: p }">
+                      <div class="card">
+                        <div class="card-image">
+                          <img src={{product.ProductImage}} alt="No Image" width="40%">
+                        </div>
 
-                  <div class="card" *ngFor="let product of products">
-                    <div class="card-image">
-                      {{product.ProductImage}}
-                      <img src={{product.ProductImage}} alt="No Image" width="40%">
-                    </div>
+                        <div class="card-content">
+                          <p>Name: <strong>{{product.name_en}}</strong></p>
+                          <p>Description: <strong>{{product.description_en}}</strong></p>
+                          <p>Barcode: <strong>{{product.barcode}}</strong></p>
+                          <p>Category: <strong>{{product.category}}</strong></p>
+                          <p>Price: <strong>{{product.price}}</strong></p>
+                          <p>Pharmacy: <strong>{{product.pharmacyID}}</strong></p>
+                        </div>
 
-                    <div class="card-content">
-                      <p>Name: <strong>{{product.name_en}}</strong></p>
-                      <p>Description: <strong>{{product.description_en}}</strong></p>
-                      <p>Barcode: <strong>{{product.barcode}}</strong></p>
-                      <p>Category: <strong>{{product.category}}</strong></p>
-                      <p>Price: <strong>{{product.price}}</strong></p>
-                      <p>Pharmacy: <strong>{{product.pharmacyID}}</strong></p>
-                    </div>
-
-                    <div class="card-action">
-                      <button type="button" (click)="update(product)" value="Update" class="btn btn-warning"><i class="fa fa-pencil w3-margin-right"></i></button>
-                      <button type="button" (click)="delete(product._id)" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                    </div>
-                  </div>
+                        <div class="card-action">
+                          <button type="button" (click)="update(product)" value="Update" class="btn btn-warning"><i class="fa fa-pencil w3-margin-right"></i></button>
+                          <button type="button" (click)="delete(product._id)" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </ul>
+                  </ul>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
                 </div>
               </div>
             </div>

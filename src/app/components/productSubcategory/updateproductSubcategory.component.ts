@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { productCategoryService } from '../../shared/productCategory.service'
 import { Router } from '@angular/router'
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
 
@@ -16,20 +15,17 @@ export class updateproductSubcategory {
     arbname: string
     engdesc: string
     arbdesc: string
-    search: string
     filesToUpload: Array<File> = [];
-    private categoryId: string
     private old: any
-    constructor(private category: productCategoryService, private router: Router, private flash: FlashMessagesService, private route: ActivatedRoute) {
-        this.categoryId = route.snapshot.params['id'];
+    constructor(private category: productCategoryService, private router: Router, private flash: FlashMessagesService) {
     }
     ngOnInit() {
-        this.old = this.category.retreive();
+        console.log(this.category.retreive())
+        this.old = JSON.parse(this.category.retreive());
         this.engname = this.old.name_en
         this.arbname = this.old.name_ar
         this.engdesc = this.old.description_en
         this.arbdesc = this.old.description_ar
-        this.search = this.old.searchable
     }
 
     fileChange(event) {
@@ -46,15 +42,14 @@ export class updateproductSubcategory {
             formData.append('name_ar', this.arbname)
             formData.append('description_en', this.engdesc)
             formData.append('description_ar', this.arbdesc)
-            formData.append('searchable', this.search)
             formData.append('id', this.old._id)
-            formData.append('catID', this.categoryId)
+            formData.append('catID', this.old.catID)
 
             this.category.updatesubCategory(formData).subscribe(res => {
                 if (res) {
                     this.category.clear()
                     this.flash.show('Product Subcategory updated Successfully', { cssClass: 'alert-success', timeout: 3000 })
-                    this.router.navigate(['/productsubCategory' + this.categoryId])
+                    this.router.navigate(['/productsubCategory/' + this.old.catID])
                 }
             })
         }

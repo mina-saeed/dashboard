@@ -16,19 +16,17 @@ export class updateProductCategory {
 	arbname: string
 	engdesc: string
 	arbdesc: string
-	search: string
 	filesToUpload: Array<File> = [];
 	private old: any
 	constructor(private category: productCategoryService, private router: Router, private flash: FlashMessagesService) {
 
 	}
 	ngOnInit() {
-		this.old = this.category.retreive();
+		this.old = JSON.parse(this.category.retreive());
 		this.engname = this.old.name_en
 		this.arbname = this.old.name_ar
 		this.engdesc = this.old.description_en
 		this.arbdesc = this.old.description_ar
-		this.search = this.old.searchable
 	}
 
 	fileChange(event) {
@@ -45,7 +43,6 @@ export class updateProductCategory {
 			formData.append('name_ar', this.arbname)
 			formData.append('description_en', this.engdesc)
 			formData.append('description_ar', this.arbdesc)
-			formData.append('searchable', this.search)
 			formData.append('id', this.old._id)
 
 			this.category.updateCategory(formData).subscribe(res => {

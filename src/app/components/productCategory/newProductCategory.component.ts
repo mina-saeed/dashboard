@@ -15,7 +15,6 @@ export class newProductCategory {
 	arbname: string
 	engdesc: string
 	arbdesc: string
-	search: string = 'true'
 	filesToUpload: Array<File> = [];
 
 	constructor(private category: productCategoryService, private router: Router, private flash: FlashMessagesService) { }
@@ -35,7 +34,6 @@ export class newProductCategory {
 			formData.append('name_ar', this.arbname)
 			formData.append('description_en', this.engdesc)
 			formData.append('description_ar', this.arbdesc)
-			formData.append('searchable', this.search)
 
 			this.category.addCategory(formData).subscribe(res => {
 				if (res) {
