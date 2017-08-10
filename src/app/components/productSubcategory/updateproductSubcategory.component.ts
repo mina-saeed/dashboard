@@ -59,7 +59,7 @@ export class updateproductSubcategory {
             })
         }
         else {
-
+            this.flash.show('Please add an Image', { cssClass: 'alert-danger', timeout: 3000 })
         }
     }
 }

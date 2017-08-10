@@ -27,10 +27,7 @@ console.log(product.get('barcode'))
 		let headers = new Headers();
     		headers.append('Authorization', config.auth);
     		headers.append('Content-Type', 'application/json')
-		let myparams: URLSearchParams = new URLSearchParams();
-		myparams.set('id',id);
-
-			return this.http.delete(config.productIP+'deleteProduct',new RequestOptions({headers: headers,params:myparams})).map(res=>{
+			return this.http.delete(config.productIP+'deleteProduct/'+id,new RequestOptions({headers: headers })).map(res=>{
 				return res.status
 			})
 
@@ -39,7 +36,6 @@ console.log(product.get('barcode'))
 	updateProduct(product){
 		let headers = new Headers();
     		headers.append('Authorization', config.auth);
-
     		return this.http.put(config.productIP+'updateProduct', product, new RequestOptions({headers: headers})).map(res=>{
     			return res.status
     		})

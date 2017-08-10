@@ -52,11 +52,7 @@ export class productCategoryService {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
-		let myparams: URLSearchParams = new URLSearchParams();
-		console.log(id);
-		myparams.set('id', id);
-
-		return this.http.delete(config.productcategoryIP + 'deleteCategory', new RequestOptions({ headers: headers, params: myparams })).map(res => {
+    	return this.http.delete(config.productcategoryIP + 'deleteCategory/'+id, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
 
@@ -66,11 +62,7 @@ export class productCategoryService {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
-		let myparams: URLSearchParams = new URLSearchParams();
-		console.log(id);
-		myparams.set('id', id);
-
-		return this.http.delete(config.productcategoryIP + 'deleteSubcategory', new RequestOptions({ headers: headers, params: myparams })).map(res => {
+		return this.http.delete(config.productcategoryIP + 'deleteSubCategory/'+id, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
 
@@ -87,7 +79,7 @@ export class productCategoryService {
 	updatesubCategory(category) {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
-		return this.http.put(config.productcategoryIP + 'updateSubcategory', category, new RequestOptions({ headers: headers })).map(res => {
+		return this.http.put(config.productcategoryIP + 'updateSubCategory', category, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
 	}

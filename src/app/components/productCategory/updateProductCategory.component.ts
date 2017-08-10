@@ -36,7 +36,7 @@ export class updateProductCategory {
 	}
 
 	updateProductCategory() {
-				if (this.filesToUpload.length > 0) {
+		if (this.filesToUpload.length > 0) {
 			const files: Array<File> = this.filesToUpload;
 			const formData = new FormData();
 
@@ -46,19 +46,19 @@ export class updateProductCategory {
 			formData.append('description_en', this.engdesc)
 			formData.append('description_ar', this.arbdesc)
 			formData.append('searchable', this.search)
-		    formData.append('id',this.old._id)
+			formData.append('id', this.old._id)
 
-		this.category.updateCategory(formData).subscribe(res => {
-			if (res) {
-				this.category.clear()
-				this.flash.show('Product Category updated Successfully', { cssClass: 'alert-success', timeout: 3000 })
-				this.router.navigate(['/productCategory'])
-			}
-		})
+			this.category.updateCategory(formData).subscribe(res => {
+				if (res) {
+					this.category.clear()
+					this.flash.show('Product Category updated Successfully', { cssClass: 'alert-success', timeout: 3000 })
+					this.router.navigate(['/productCategory'])
 				}
-	else{
-
-	}
+			})
+		}
+		else {
+			this.flash.show('Please add an Image', { cssClass: 'alert-danger', timeout: 3000 })
+		}
 	}
 }
 
