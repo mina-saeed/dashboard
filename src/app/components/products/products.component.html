@@ -100,7 +100,7 @@
 
                 <div class="col-md-5 col-md-offset-0">
                   <ul>
-                    <ul *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: p }">
+                    <ul *ngFor="let product of products | paginate: { itemsPerPage: 5, currentPage: p }">
                       <div class="card">
                         <div class="card-image">
                           <img src={{product.ProductImage}} alt="No Image" width="40%">

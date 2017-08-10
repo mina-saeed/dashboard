@@ -26,6 +26,13 @@ export class productSubcategory implements OnInit {
 
 	}
 
+	filterItem(value){
+   if(!value)  //when nothing has typed
+   this.allProductCategories = Object.assign([], this.allProductCategories).filter(
+      item => item.name_en.toLowerCase().indexOf(value.toLowerCase()) > -1
+   )
+	}
+
 	addnew() {
 		this.router.navigate(['/newproductsubCategory/' + this.paramName])
 	}

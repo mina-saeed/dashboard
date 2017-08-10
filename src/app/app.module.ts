@@ -6,8 +6,9 @@ import { AppComponent } from './components/app/app.component';
 import {routes, RoutingComponents} from './Routes/app.routing';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ChartsModule } from 'ng2-charts';
-import Quagga from 'quagga';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
   ],
   imports: [
-    BrowserModule, FormsModule , HttpModule, routes,FlashMessagesModule,ChartsModule,NgxPaginationModule
+    BrowserModule, FormsModule , HttpModule, routes,FlashMessagesModule,ChartsModule,
+    NgxPaginationModule,Ng2SearchPipeModule
     ],
   bootstrap: [AppComponent]
 })

@@ -3,7 +3,6 @@ import { medicineService } from '../../shared/medicines.service'
 import { categoryService } from '../../shared/categories.service'
 import { Router } from '@angular/router'
 import { FlashMessagesService } from 'angular2-flash-messages';
-import Quagga from 'quagga';
 import * as $ from 'jquery';
 import * as barcode from './barcode.js'
 
