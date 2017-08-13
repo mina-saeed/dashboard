@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router'
 import { FlashMessagesService } from 'angular2-flash-messages';
 
+
 @Component({
 	templateUrl: 'productSubcategory.component.html',
 	providers: [productCategoryService]
@@ -12,25 +13,16 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class productSubcategory implements OnInit {
 	private allProductCategories = []
 	private paramName: String
-	constructor(private categoryObj: productCategoryService,private flashMessage: FlashMessagesService, private router: Router, private route: ActivatedRoute) {
+	constructor(private categoryObj: productCategoryService, private flashMessage: FlashMessagesService, private router: Router, private route: ActivatedRoute) {
 		this.paramName = route.snapshot.params['id']
 	}
 
 	ngOnInit() {
 		this.categoryObj.getAllsubCategories(this.paramName).subscribe(res => {
-			console.log(res)
 			this.allProductCategories = res
-			console.log(this.allProductCategories)
 			return this.allProductCategories
 		})
 
-	}
-
-	filterItem(value){
-   if(!value)  //when nothing has typed
-   this.allProductCategories = Object.assign([], this.allProductCategories).filter(
-      item => item.name_en.toLowerCase().indexOf(value.toLowerCase()) > -1
-   )
 	}
 
 	addnew() {

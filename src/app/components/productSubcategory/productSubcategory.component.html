@@ -107,7 +107,7 @@
                 <div class="x_content">
                   <div class="col-md-5 col-md-offset-0">
                     <ul>
-                      <ul *ngFor="let category of allProductCategories |filter:term | paginate: { itemsPerPage: 5, currentPage: p }">
+                      <ul *ngFor="let category of allProductCategories |searchFilter:term | paginate: { itemsPerPage: 5, currentPage: p }">
                         <div class="card">
                           <div class="card-image">
                             <img src={{category.subImage}} alt="No Image" width="40%">

@@ -7,8 +7,8 @@ import {routes, RoutingComponents} from './Routes/app.routing';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ChartsModule } from 'ng2-charts';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { Pipe,PipeTransform} from '@angular/core';
+import { MainPipe} from './filter/filter.module'
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   ],
   imports: [
     BrowserModule, FormsModule , HttpModule, routes,FlashMessagesModule,ChartsModule,
-    NgxPaginationModule,Ng2SearchPipeModule
+    NgxPaginationModule,MainPipe
     ],
   bootstrap: [AppComponent]
 })

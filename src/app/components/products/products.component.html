@@ -93,6 +93,9 @@
                 <div class="col-md-offset-10">
                   <a href="/newproduct" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add new Product</a>
                 </div>
+                <div class="col-md-offset-5">
+                  <input type="text" [(ngModel)]="term" class="form-control col-md-7 col-xs-8" placeholder="Search..">
+                </div>
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
@@ -100,7 +103,7 @@
 
                 <div class="col-md-5 col-md-offset-0">
                   <ul>
-                    <ul *ngFor="let product of products | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <ul *ngFor="let product of products | searchFilter:term | paginate: { itemsPerPage: 5, currentPage: p }">
                       <div class="card">
                         <div class="card-image">
                           <img src={{product.ProductImage}} alt="No Image" width="40%">

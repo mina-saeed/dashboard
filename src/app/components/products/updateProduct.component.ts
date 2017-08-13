@@ -31,10 +31,10 @@ export class updateProduct implements OnInit {
   ngOnInit() {
     this.oldproduct = JSON.parse((this.product.retreive()));
     this.oldbar = this.oldproduct.barcode
-    this.oldengname = this.oldproduct.name.name_english
-    this.oldarbname = this.oldproduct.name.name_ar
-    this.oldengdesc = this.oldproduct.description.english_description
-    this.oldarbdesc = this.oldproduct.description.arabic_description
+    this.oldengname = this.oldproduct.name_en
+    this.oldarbname = this.oldproduct.name_ar
+    this.oldengdesc = this.oldproduct.description_en
+    this.oldarbdesc = this.oldproduct.description_ar
     this.oldprice = this.oldproduct.price
     this.category = this.oldproduct.category
     this.subCategory = this.oldproduct.subCategory

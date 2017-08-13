@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core'
 import {RouterModule ,Routes} from '@angular/router'
 import { ChartsModule } from 'ng2-charts';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import {userGuard} from '../guards/user.guard'
 import {users} from '../shared/users.service'
@@ -171,7 +170,8 @@ const componentRoutes: Routes =[
 @NgModule({
 
 	imports:[
-		RouterModule.forRoot(componentRoutes),ChartsModule,NgxPaginationModule,Ng2SearchPipeModule
+		RouterModule.forRoot(componentRoutes),ChartsModule,NgxPaginationModule
+		
 	],
 
 	providers: [
