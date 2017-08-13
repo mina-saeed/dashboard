@@ -34,7 +34,6 @@ export class allusers implements OnInit {
           }
         }
         this.allusers = this.newUsers;
-        console.log(this.allusers)
         return true
       }
       else {
@@ -43,30 +42,41 @@ export class allusers implements OnInit {
     })
   }
 
-  Onacceptuser(useremail, index) {
-    if (this.usertype.length == 0) {
+  Onacceptuser(useremail, index, type) {
+    console.log(type)
+    if (this.usertype.length == 0 && (type != 'user')) {
       this.flashMessage.show('Please select a type', { cssClass: 'alert-danger', timeout: 3000 });
       return false;
     }
-    else {
+    else if (type == 'user') {
       const accepteduser = {
         email: useremail,
         active: 1,
-        type: this.usertype[index]
+        type: type
       }
       this.user.acceptuser(accepteduser).subscribe(res => {
         this.flashMessage.show('User successfully confirmed', { cssClass: 'alert-success', timeout: 3000 })
         location.reload();
       });
 
+    } else {
+      const accepteduser = {
+        email: useremail,
+        active: 1,
+        type: this.usertype[index]
+
+      }
+      this.user.acceptuser(accepteduser).subscribe(res => {
+        this.flashMessage.show('User successfully confirmed', { cssClass: 'alert-success', timeout: 3000 })
+        location.reload();
+      });
     }
   }
 
   delete(email) {
     this.user.banuser(email).subscribe(res => {
-      console.log(res);
       this.flashMessage.show('User successfully banned', { cssClass: 'alert-warning', timeout: 3000 })
-      // location.reload();
+      location.reload();
     });
   }
 

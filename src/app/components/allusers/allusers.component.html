@@ -60,7 +60,7 @@
                       <option value="User">User</option>
                       <option value="Pharmacy">Pharmacy</option>
                       </select></td>
-                        <td><input type="button" (click)="Onacceptuser(x.email,in)" value="Accept" class="btn btn-success"></td>
+                        <td><input type="button" (click)="Onacceptuser(x.email,in,x.type)" value="Activate" class="btn btn-success"></td>
                         <td><input type="button" (click)="delete(x.email)" value="Ban" class="btn btn-danger"></td>
                       </tr>
                     </tbody>
@@ -75,22 +75,24 @@
                       <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Type</th>
                         <th>Activate/Deactivate</th>
+                        <th>Type</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let x of allusers; let in=index">
                       <tr>
                         <td>{{x.name}}</td>
                         <td>{{x.email}}</td>
-                        <td> <select required class="form-control" name="type" [(ngModel)]="usertype[in]">
+                        <td *ngIf="x.active == 0"><input type="button" (click)="Onacceptuser(x.email,in,x.type)" value="Activate" class="btn btn-success"></td>
+                        <td *ngIf="x.active == 1"><input type="button" (click)="delete(x.email)" value="Ban" class="btn btn-danger"></td>
+                        
+                        <td *ngIf="x.active == 0"><select required class="form-control" name="type" [(ngModel)]="usertype[in]">
                       <option value="admin">Admin</option>
                       <option value="superadmin">SuperAdmin</option>
                       <option value="user">User</option>
                       <option value="pharmacy">Pharmacy</option>
                       </select></td>
-                        <td *ngIf="x.active == 0"><input type="button" (click)="Onacceptuser(x.email,in)" value="Accept" class="btn btn-success"></td>
-                        <td *ngIf="x.active == 1"><input type="button" (click)="delete(x.email)" value="Ban" class="btn btn-danger"></td>
+                        <td *ngIf="x.active == 1">{{x.type}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -111,7 +113,7 @@
                       <tr>
                         <td>{{x.name}}</td>
                         <td>{{x.email}}</td>
-                        <td *ngIf="x.active == 0"> <input type="button" (click)="Onacceptuser(x.email,in)" value="Accept" class="btn btn-success"></td>
+                        <td *ngIf="x.active == 0"> <input type="button" (click)="Onacceptuser(x.email,in,x.type)" value="Activate" class="btn btn-success"></td>
                         <td *ngIf="x.active == 1"><input type="button" (click)="delete(x.email)" value="Ban" class="btn btn-danger"></td>
                       </tr>
                     </tbody>
