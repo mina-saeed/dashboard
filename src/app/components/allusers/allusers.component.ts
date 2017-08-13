@@ -34,6 +34,7 @@ export class allusers implements OnInit {
           }
         }
         this.allusers = this.newUsers;
+        console.log(this.allusers)
         return true
       }
       else {
