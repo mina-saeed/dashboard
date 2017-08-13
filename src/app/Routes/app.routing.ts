@@ -26,8 +26,6 @@ import {allusers} from '../components/allusers/allusers.component'
 import {sidebar} from '../components/sidebar/sidebar.component'
 import {topnav} from '../components/sidebar/topnav.component'
 import { AllpharmacyComponent } from '../components/allpharmacy/allpharmacy.component';
-import {subcategory} from '../components/subcategory/subcategory.component'
-import {newSubcategory} from '../components/subcategory/newSubcategory.component'
 import {productSubcategory} from '../components/productSubcategory/productSubcategory.component'
 import {newproductSubcategory} from '../components/productSubcategory/newproductSubcategory.component'
 import {updateproductSubcategory} from '../components/productSubcategory/updateproductSubcategory.component'
@@ -109,16 +107,6 @@ const componentRoutes: Routes =[
 
 			},
 			{
-				path: 'subCategory/:id',
-				component: subcategory,
-				canActivate :[userGuard]
-			},
-			{
-				path: 'newsubCategory/:id',
-				component: newSubcategory,
-				canActivate :[userGuard]
-			},
-			{
 				path: 'productsubCategory/:id',
 				component: productSubcategory,
 				canActivate :[userGuard]
@@ -149,7 +137,7 @@ const componentRoutes: Routes =[
 				canActivate: [userGuard],
 			},			
 			{
-				path: 'updatCategory/:id',
+				path: 'updateCategory',
 				component: updateCategory,
 				canActivate: [userGuard]
 			},
@@ -198,8 +186,6 @@ export const RoutingComponents =[
 									sidebar,
 									topnav,
 									AllpharmacyComponent,
-									subcategory,
-									newSubcategory,
 									productSubcategory,
 									newproductSubcategory,
 									LineChartDemoComponent,

@@ -15,7 +15,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>All Categories</h3>
+              <h3>All Medicine Categories</h3>
             </div>
           </div>
 
@@ -32,8 +32,6 @@
                         <tr>
                           <th>Name</th>
                           <th>Description</th>
-                          <th>Show Subcategories</th>
-                          <th>Add Subcategories</th>
                           <th>Update</th>
                           <th>Delete</th>
                         </tr>
@@ -42,9 +40,7 @@
                       	<tr>
                       		<td>{{category.name.name_english}}</td>
                       		<td>{{category.description.english_description}}</td>
-                          <td><input type="button" (click)="showsub(category._id)" value="Show" class="btn btn-primary"></td>
-                          <td><input type="button" (click)="addnew(category._id)" value="Add" class="btn btn-primary"></td>
-                          <td><input type="button" (click)="update(category._id)" value="Update" class="btn btn-warning"></td>
+                          <td><input type="button" (click)="update(category)" value="Update" class="btn btn-warning"></td>
                           <td><input type="button" (click)="delete(category._id)" value="Delete" class="btn btn-danger"></td>
                         </tr>
                       </tbody>

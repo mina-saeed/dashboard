@@ -105,9 +105,7 @@
                   <ul>
                     <ul *ngFor="let product of products | searchFilter:term | paginate: { itemsPerPage: 5, currentPage: p }">
                       <div class="card">
-                        <div class="card-image">
-                          <img src={{product.ProductImage}} alt="No Image" width="40%">
-                        </div>
+                          <img src={{product.ProductImage}} alt="No Image" width="100%" class="card-image">
 
                         <div class="card-content">
                           <p>Name: <strong>{{product.name_en}}</strong></p>

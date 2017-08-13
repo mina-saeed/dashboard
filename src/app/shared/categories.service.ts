@@ -28,27 +28,6 @@ export class categoryService {
 		})
 	}
 
-	getAllsubCategories(id): any {
-
-		let headers = new Headers();
-		headers.append('Authorization', config.auth);
-		headers.append('Content-Type', 'application/json')
-
-		return this.http.get(config.categoryIP + 'all' + id, new RequestOptions({ headers: headers })).map(res => res.json())
-	}
-
-	addsubCategory(category) {
-
-		let headers = new Headers();
-		headers.append('Authorization', config.auth);
-		headers.append('Content-Type', 'application/json')
-
-		return this.http.post(config.categoryIP + 'new', JSON.stringify(category), new RequestOptions({ headers: headers })).map(res => {
-			return res.status
-		})
-	}
-
-
 	deleteCategory(id) {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
@@ -71,5 +50,17 @@ export class categoryService {
 		return this.http.put(config.categoryIP + 'updateCategory', JSON.stringify(category), new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
+	}
+
+	store(category) {
+		localStorage.setItem('category', JSON.stringify(category));
+	}
+
+	retreive() {
+		return localStorage.getItem('category');
+	}
+
+	clear() {
+		localStorage.removeItem('category');
 	}
 }

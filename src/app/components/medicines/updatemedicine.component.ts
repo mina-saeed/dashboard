@@ -37,10 +37,9 @@ export class updatemedicine implements OnInit {
 		this.oldmilli = this.oldmedicine.milligrams
 		this.oldprice = this.oldmedicine.price
 		this.category = this.oldmedicine.category
-		console.log(this.oldmedicine.barcode)
-		/*this.categoryObj.getAllCategories().subscribe(res => {
+		this.categoryObj.getAllCategories().subscribe(res => {
 			this.allCategories = res
-		})*/
+		})
 	}
 
 	update(medicineFormData) {

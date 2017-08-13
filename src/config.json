@@ -1,9 +1,9 @@
 {
-    "userIP": "http://207.154.240.16:3001",
-    "pharmacyIP": "http://207.154.240.16:3001",
+    "userIP": "http://146.185.148.66:3001",
+    "pharmacyIP": "http://146.185.148.66:3001",
     "medicineIP": "http://146.185.148.66:3004/",
     "productIP": "http://146.185.148.66:3005/",
-    "categoryIP": "http://207.154.240.16:3006/",
+    "categoryIP": "http://146.185.148.66:3006/",
     "productcategoryIP": "http://146.185.148.66:3007/",
 
     "auth": "Basic YWRtaW46MTIzNDU2"
