@@ -11,7 +11,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 
 export class newCategory {
-
+private searchable: string = "true"
 	constructor(private category : categoryService, private router:Router ,private flashMessage: FlashMessagesService){}
 
 addNew(categoryFormData){

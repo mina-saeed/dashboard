@@ -38,7 +38,12 @@ export class productSubcategory implements OnInit {
 		this.categoryObj.deletesubCategory(id).subscribe(res => {
 			if (res == 200) {
 				this.flashMessage.show('ProductSubcategory deleted successfully', { cssClass: 'alert-success', timeout: 3000 })
-				location.reload()
+				for (var i = 0; i < this.allProductCategories.length; i++) {
+					if (this.allProductCategories[i]._id == id) {
+						this.allProductCategories.splice(i, 1)
+						return this.allProductCategories;
+					}
+				}
 			}
 		});
 	}

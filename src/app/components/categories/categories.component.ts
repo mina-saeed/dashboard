@@ -26,7 +26,12 @@ export class categories implements OnInit {
 		this.categoryObj.deleteCategory(id).subscribe(res => {
 			if (res == 200) {
 				this.flashMessage.show('Category deleted successfully', { cssClass: 'alert-success', timeout: 3000 })
-				location.reload()
+				for (var i = 0; i < this.allCategories.length; i++) {
+					if (this.allCategories[i]._id == id) {
+						this.allCategories.splice(i, 1)
+						return this.allCategories;
+					}
+				}
 			}
 		});
 	}

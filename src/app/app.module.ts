@@ -9,6 +9,7 @@ import { ChartsModule } from 'ng2-charts';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { Pipe,PipeTransform} from '@angular/core';
 import { MainPipe} from './filter/filter.module'
+import { MainPipe2} from './filter/filter2.module'
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { MainPipe} from './filter/filter.module'
   ],
   imports: [
     BrowserModule, FormsModule , HttpModule, routes,FlashMessagesModule,ChartsModule,
-    NgxPaginationModule,MainPipe
+    NgxPaginationModule,MainPipe,MainPipe2
     ],
   bootstrap: [AppComponent]
 })

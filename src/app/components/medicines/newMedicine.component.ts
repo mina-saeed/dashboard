@@ -16,13 +16,13 @@ import * as barcode from './barcode.js'
 export class newMedicine implements OnInit {
     private allCategories = []
     private type: Boolean = false;
-    private fixedprice: String = 'Yes';
-    private scanner: Boolean = false;
-
+    private fixedprice: String = 'No';
+    private category: string
     constructor(private medicine: medicineService, private router: Router, private categoryObj: categoryService, private flash: FlashMessagesService) { }
     ngOnInit() {
         this.categoryObj.getAllCategories().subscribe(res => {
             this.allCategories = res
+            this.category = this.allCategories[0].name.name_english;
             return this.allCategories
         })
     var sound = new Audio("./src/app/components/medicines/barcode.wav");
@@ -62,10 +62,10 @@ export class newMedicine implements OnInit {
 
     Onchange(fixed) {
         if (fixed == 'No') {
-            this.type = true;
+            this.type = false;
         }
         else {
-            this.type = false;
+            this.type = true;
         }
     }
 

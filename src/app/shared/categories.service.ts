@@ -32,11 +32,7 @@ export class categoryService {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
-		let myparams: URLSearchParams = new URLSearchParams();
-		console.log(id);
-		myparams.set('id', id);
-
-		return this.http.delete(config.categoryIP + 'deleteCategory', new RequestOptions({ headers: headers, params: myparams })).map(res => {
+		return this.http.delete(config.categoryIP + 'deleteCategory/'+id, new RequestOptions({ headers: headers})).map(res => {
 			return res.status
 		})
 
