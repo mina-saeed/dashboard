@@ -85,12 +85,8 @@
       <!-- page content -->
       <div class="right_col" role="main">
         <div class="">
-
           <div class="clearfix"></div>
-
           <div class="row">
-
-
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div>
@@ -109,12 +105,11 @@
                       <ul>
                         <ul *ngFor="let category of allProductCategories |searchFilter:term | paginate: { itemsPerPage: 5, currentPage: p }">
                           <div class="card">
-                            <img src={{category.subImage}} alt="No Image" width="100%" class="card-image"> 
+                            <img src={{category.subImage}} alt="No Image" width="100%" class="card-image">
                             <div class="card-content">
                               <p>Name: <strong>{{category.name_en}}</strong></p>
                               <p>Description: <strong>{{category.description_en}}</strong></p>
                             </div>
-
                             <div class="card-action">
                               <button type="button" (click)="update(category)" value="Update" class="btn btn-warning"><i class="fa fa-pencil w3-margin-right"></i></button>
                               <button type="button" (click)="delete(category._id)" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>

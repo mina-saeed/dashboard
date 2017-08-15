@@ -84,53 +84,37 @@
       <app-topnav></app-topnav>
       <!-- page content -->
       <div class="right_col" role="main">
-        <div class="">
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-              <div class="x_title">
-                <h2>All Products </h2>
-                <div class="col-md-offset-10">
-                  <a href="/newproduct" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add new Product</a>
-                </div>
-                <div class="col-md-offset-5">
-                  <input type="text" [(ngModel)]="term" class="form-control col-md-7 col-xs-8" placeholder="Search..">
-                </div>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-
-                <div class="col-md-5 col-md-offset-0">
-                  <ul>
-                    <ul *ngFor="let product of products | searchFilter:term | paginate: { itemsPerPage: 5, currentPage: p }">
-                      <div class="card">
-                          <img src={{product.ProductImage}} alt="No Image" width="100%" class="card-image">
-
-                        <div class="card-content">
-                          <p>Name: <strong>{{product.name_en}}</strong></p>
-                          <p>Description: <strong>{{product.description_en}}</strong></p>
-                          <p>Barcode: <strong>{{product.barcode}}</strong></p>
-                          <p>Category: <strong>{{product.category}}</strong></p>
-                          <p>Price: <strong>{{product.price}}</strong></p>
-                          <p>Pharmacy: <strong>{{product.pharmacyID}}</strong></p>
-                        </div>
-
-                        <div class="card-action">
-                          <button type="button" (click)="update(product)" value="Update" class="btn btn-warning"><i class="fa fa-pencil w3-margin-right"></i></button>
-                          <button type="button" (click)="delete(product._id)" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                        </div>
-                      </div>
-                    </ul>
-                  </ul>
-                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-                </div>
-              </div>
+        <div class="x_title">
+          <h2>All Products </h2>
+          <div class="col-md-offset-10">
+            <a href="/newproduct" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add new Product</a>
+          </div>
+          <div class="col-xs-offset-10">
+            <input type="text" [(ngModel)]="term" class="form-control col-xs-10" placeholder="Search..">
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div *ngFor="let product of products | searchFilter:term | paginate: { itemsPerPage: 5, currentPage: p }">
+          <div class="card col-md-3 col-sm-6 col-xs-12">
+            <img src={{product.ProductImage}} alt="No Image" width="100%" class="card-image img">
+            <div class="card-content">
+              <p>Name: <strong>{{product.name_en}}</strong></p>
+              <p>Description: <strong>{{product.description_en}}</strong></p>
+              <p>Barcode: <strong>{{product.barcode}}</strong></p>
+              <p>Category: <strong>{{product.category}}</strong></p>
+              <p>Price: <strong>{{product.price}}</strong></p>
+              <p>Pharmacy: <strong>{{product.pharmacyID}}</strong></p>
+            </div>
+            <div class="card-action">
+              <button type="button" (click)="update(product)" value="Update" class="btn btn-warning"><i class="fa fa-pencil w3-margin-right"></i></button>
+              <button type="button" (click)="delete(product._id)" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>
+        <div class="clearfix"></div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
-      <!-- /page content -->
     </div>
+    <!-- /page content -->
   </div>
 </body>

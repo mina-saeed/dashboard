@@ -10,6 +10,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { Pipe,PipeTransform} from '@angular/core';
 import { MainPipe} from './filter/filter.module'
 import { MainPipe2} from './filter/filter2.module'
+import { MainPipe3} from './filter/filter3.module'
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { MainPipe2} from './filter/filter2.module'
   ],
   imports: [
     BrowserModule, FormsModule , HttpModule, routes,FlashMessagesModule,ChartsModule,
-    NgxPaginationModule,MainPipe,MainPipe2
+    NgxPaginationModule,MainPipe,MainPipe2,MainPipe3
     ],
   bootstrap: [AppComponent]
 })
