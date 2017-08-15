@@ -96,16 +96,14 @@
         </div>
         <div *ngFor="let product of products | searchFilter:term | paginate: { itemsPerPage: 5, currentPage: p }">
           <div class="card col-md-3 col-sm-6 col-xs-12">
-            <img src={{product.ProductImage}} alt="No Image" width="100%" class="card-image img">
+            <img src={{product.ProductImage}} alt="No Image" width="235" height="150" class="card-image img">
             <div class="card-content">
               <p>Name: <strong>{{product.name_en}}</strong></p>
-              <p>Description: <strong>{{product.description_en}}</strong></p>
-              <p>Barcode: <strong>{{product.barcode}}</strong></p>
               <p>Category: <strong>{{product.category}}</strong></p>
               <p>Price: <strong>{{product.price}}</strong></p>
-              <p>Pharmacy: <strong>{{product.pharmacyID}}</strong></p>
             </div>
             <div class="card-action">
+              <button type="button" (click)="show(product)" value="show" class="btn btn-info"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
               <button type="button" (click)="update(product)" value="Update" class="btn btn-warning"><i class="fa fa-pencil w3-margin-right"></i></button>
               <button type="button" (click)="delete(product._id)" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </div>

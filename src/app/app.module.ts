@@ -1,28 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms'
-import {HttpModule} from '@angular/http'
+import { FormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http'
 import { AppComponent } from './components/app/app.component';
-import {routes, RoutingComponents} from './Routes/app.routing';
+import { routes, RoutingComponents } from './Routes/app.routing';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ChartsModule } from 'ng2-charts';
-import {NgxPaginationModule} from 'ngx-pagination';
-import { Pipe,PipeTransform} from '@angular/core';
-import { MainPipe} from './filter/filter.module'
-import { MainPipe2} from './filter/filter2.module'
-import { MainPipe3} from './filter/filter3.module'
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Pipe, PipeTransform } from '@angular/core';
+import { MainPipe } from './filter/filter.module'
+import { MainPipe2 } from './filter/filter2.module'
+import { MainPipe3 } from './filter/filter3.module'
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { productDialog } from './components/products/dialog.component'
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoutingComponents
-
+    RoutingComponents,
+    productDialog
   ],
   imports: [
-    BrowserModule, FormsModule , HttpModule, routes,FlashMessagesModule,ChartsModule,
-    NgxPaginationModule,MainPipe,MainPipe2,MainPipe3
-    ],
+    BrowserModule, FormsModule, HttpModule, routes, FlashMessagesModule, ChartsModule,
+    NgxPaginationModule, MainPipe, MainPipe2, MainPipe3, BootstrapModalModule
+  ],
+  entryComponents: [
+    productDialog
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
