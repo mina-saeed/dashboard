@@ -13,6 +13,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 export class newProduct implements OnInit {
 	private allProductCategories = []
+	private allProductSubCategories =[]
 	bar: string
 	engname: string
 	arbname: string
@@ -20,7 +21,7 @@ export class newProduct implements OnInit {
 	arbdesc: string
 	price: string
 	category: string
-	subCategory: string
+	subCategory: string = null
 	pharmacyID: string
 	filesToUpload: Array<File> = [];
 
@@ -67,6 +68,18 @@ export class newProduct implements OnInit {
 			window.scroll(0, 0)
 			this.flash.show('Please add an Image', { cssClass: 'alert-danger', timeout: 3000 })
 
+		}
+	}
+
+	Onchange(cat) {
+		for (var i = 0; i < this.allProductCategories.length; i++) {
+			if (this.allProductCategories[i].name_en == cat) {
+			this.productcategoryObj.getAllsubCategories(this.allProductCategories[i]._id).subscribe(res => {
+			this.allProductSubCategories = res
+			this.subCategory = this.allProductSubCategories[0].name_en
+			return this.allProductSubCategories
+				})
+			}
 		}
 	}
 }
