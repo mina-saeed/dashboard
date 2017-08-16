@@ -13,6 +13,9 @@ import { MainPipe2 } from './filter/filter2.module'
 import { MainPipe3 } from './filter/filter3.module'
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { productDialog } from './components/products/dialog.component'
+import { TruncatePipe } from 'angular2-truncate';
+import { productCategoryDialog } from './components/productCategory/pcdialog.component'
+import { productSubcategoryDialog } from './components/productSubcategory/pscdialog.component'
 
 
 
@@ -20,14 +23,19 @@ import { productDialog } from './components/products/dialog.component'
   declarations: [
     AppComponent,
     RoutingComponents,
-    productDialog
+    productDialog,
+    productCategoryDialog,
+    productSubcategoryDialog,
+    TruncatePipe
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, routes, FlashMessagesModule, ChartsModule,
     NgxPaginationModule, MainPipe, MainPipe2, MainPipe3, BootstrapModalModule
   ],
   entryComponents: [
-    productDialog
+    productDialog,
+    productCategoryDialog,
+    productSubcategoryDialog
   ],
   bootstrap: [AppComponent]
 })

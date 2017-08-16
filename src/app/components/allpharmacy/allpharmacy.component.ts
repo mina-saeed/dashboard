@@ -27,6 +27,7 @@ export class AllpharmacyComponent implements OnInit {
 
   Onacceptpharma(pharmaemail, index) {
     if (this.pharmacategory.length == 0) {
+      window.scroll(0, 0)
       this.flashMessage.show('Please select a type', { cssClass: 'alert-danger', timeout: 3000 });
       return false;
     }
@@ -47,9 +48,8 @@ export class AllpharmacyComponent implements OnInit {
 
   delete(email) {
     this.pharmacy.banpharma(email).subscribe(res => {
-      console.log(res);
+      window.scroll(0, 0)
       this.flashMessage.show('User successfully banned', { cssClass: 'alert-warning', timeout: 3000 })
-      // location.reload();
     });
   }
 }

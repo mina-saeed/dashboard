@@ -15,7 +15,6 @@ export class categories implements OnInit {
 
 	ngOnInit() {
 		this.categoryObj.getAllCategories().subscribe(res => {
-			console.log(res)
 			this.allCategories = res
 			return this.allCategories
 		})
@@ -25,6 +24,7 @@ export class categories implements OnInit {
 	delete(id) {
 		this.categoryObj.deleteCategory(id).subscribe(res => {
 			if (res == 200) {
+				window.scroll(0, 0)
 				this.flashMessage.show('Category deleted successfully', { cssClass: 'alert-success', timeout: 3000 })
 				for (var i = 0; i < this.allCategories.length; i++) {
 					if (this.allCategories[i]._id == id) {

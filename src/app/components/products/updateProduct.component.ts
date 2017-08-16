@@ -73,7 +73,8 @@ export class updateProduct implements OnInit {
         }
       })
     }
-    else {
+    else {				
+      window.scroll(0,0)
       this.flash.show('Please add an Image', { cssClass: 'alert-danger', timeout: 3000 })
     }
   }

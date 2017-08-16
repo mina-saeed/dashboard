@@ -43,8 +43,8 @@ export class allusers implements OnInit {
   }
 
   Onacceptuser(useremail, index, type) {
-    console.log(type)
     if (this.usertype.length == 0 && (type != 'user')) {
+      window.scroll(0, 0)
       this.flashMessage.show('Please select a type', { cssClass: 'alert-danger', timeout: 3000 });
       return false;
     }
