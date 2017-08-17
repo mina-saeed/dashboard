@@ -40,12 +40,12 @@
                       <th>Delete</th>
                     </tr>
                   </thead>
-                  <tbody *ngFor="let category of allCategories | searchFilter3:term | paginate: { itemsPerPage: 10, currentPage: p }">
+                  <tbody *ngFor="let category of allCategories | searchFilter3:term | paginate: { itemsPerPage: 10, currentPage: p }; let in=index">
                     <tr>
                       <td>{{category.name.name_english}}</td>
                       <td>{{category.description.english_description}}</td>
                       <td><input type="button" (click)="update(category)" value="Update" class="btn btn-warning"></td>
-                      <td><input type="button" (click)="delete(category._id)" value="Delete" class="btn btn-danger"></td>
+                      <td><input type="button" (click)="delete(category._id,in)" value="Delete" class="btn btn-danger"></td>
                     </tr>
                   </tbody>
                 </table>

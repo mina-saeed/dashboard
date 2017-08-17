@@ -11,6 +11,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { MainPipe } from './filter/filter.module'
 import { MainPipe2 } from './filter/filter2.module'
 import { MainPipe3 } from './filter/filter3.module'
+import { MainPipe4 } from './filter/filter4.module'
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { productDialog } from './components/products/dialog.component'
 import { TruncatePipe } from 'angular2-truncate';
@@ -30,7 +31,7 @@ import { productSubcategoryDialog } from './components/productSubcategory/pscdia
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, routes, FlashMessagesModule, ChartsModule,
-    NgxPaginationModule, MainPipe, MainPipe2, MainPipe3, BootstrapModalModule
+    NgxPaginationModule, MainPipe, MainPipe2, MainPipe3,MainPipe4, BootstrapModalModule
   ],
   entryComponents: [
     productDialog,

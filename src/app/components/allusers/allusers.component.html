@@ -30,6 +30,9 @@
               <li class="active"><button type="button" (click)="newUser()" value="allusers" class="btn btn-default">New Users</button></li>
               <li><button type="button" (click)="showAdmins()" value="admins" class="btn btn-default">Show Admins</button></li>
               <li><button type="button" (click)="showUsers()" value="users" class="btn btn-default">Show Users</button></li>
+              <li>
+                  <input type="text" [(ngModel)]="term" class="form-control col-xs-8" placeholder="Search by Email..">
+              </li>
             </ul>
           </div>
           <div class="clearfix"></div>
@@ -37,7 +40,7 @@
             <div class="x_panel">
               <div class="x_content">
                 <div *ngIf="new_u">
-                  <div class="title_left">
+                  <div class="x_title">
                     <h3>Unaccepted Users</h3>
                   </div>
                   <table class="table table-striped table-bordered">
@@ -50,7 +53,7 @@
                         <th>Ban</th>
                       </tr>
                     </thead>
-                    <tbody *ngFor="let x of allusers; let in=index">
+                    <tbody *ngFor="let x of allusers | searchFilter4:term | paginate: { itemsPerPage: 20, currentPage: p }; let in=index">
                       <tr>
                         <td>{{x.name}}</td>
                         <td>{{x.email}}</td>
@@ -65,9 +68,10 @@
                       </tr>
                     </tbody>
                   </table>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
                 </div>
                 <div *ngIf="admin">
-                  <div class="title_left">
+                  <div class="x_title_">
                     <h3>All Admins</h3>
                   </div>
                   <table class="table table-striped table-bordered">
@@ -79,13 +83,13 @@
                         <th>Type</th>
                       </tr>
                     </thead>
-                    <tbody *ngFor="let x of allusers; let in=index">
+                    <tbody *ngFor="let x of allusers| searchFilter4:term | paginate: { itemsPerPage: 20, currentPage: p }; let in=index">
                       <tr>
                         <td>{{x.name}}</td>
                         <td>{{x.email}}</td>
                         <td *ngIf="x.active == 0"><input type="button" (click)="Onacceptuser(x.email,in,x.type)" value="Activate" class="btn btn-success"></td>
                         <td *ngIf="x.active == 1"><input type="button" (click)="delete(x.email)" value="Ban" class="btn btn-danger"></td>
-                        
+
                         <td *ngIf="x.active == 0"><select required class="form-control" name="type" [(ngModel)]="usertype[in]">
                       <option value="admin">Admin</option>
                       <option value="superadmin">SuperAdmin</option>
@@ -96,9 +100,10 @@
                       </tr>
                     </tbody>
                   </table>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
                 </div>
                 <div *ngIf="user_f">
-                  <div class="title_left">
+                  <div class="x_title">
                     <h3>All Users</h3>
                   </div>
                   <table class="table table-striped table-bordered">
@@ -109,7 +114,7 @@
                         <th>Activate/Deactivate</th>
                       </tr>
                     </thead>
-                    <tbody *ngFor="let x of allusers; let in=index">
+                    <tbody *ngFor="let x of allusers | searchFilter4:term | paginate: { itemsPerPage: 20, currentPage: p }; let in=index">
                       <tr>
                         <td>{{x.name}}</td>
                         <td>{{x.email}}</td>
@@ -118,6 +123,7 @@
                       </tr>
                     </tbody>
                   </table>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
                 </div>
               </div>
             </div>

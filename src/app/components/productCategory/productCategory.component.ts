@@ -33,17 +33,13 @@ export class productCategory implements OnInit {
 
 	}
 
-	delete(id) {
+	delete(id, index) {
 		this.categoryObj.deleteCategory(id).subscribe(res => {
 			if (res == 200) {
-				window.scroll(0,0)
+				window.scroll(0, 0)
 				this.flashMessage.show('ProductCategory deleted successfully', { cssClass: 'alert-success', timeout: 3000 })
-				for (var i = 0; i < this.allProductCategories.length; i++) {
-					if (this.allProductCategories[i]._id == id) {
-						this.allProductCategories.splice(i, 1)
-						return this.allProductCategories;
-					}
-				}
+				this.allProductCategories.splice(index, 1)
+				return this.allProductCategories;
 			}
 		});
 	}

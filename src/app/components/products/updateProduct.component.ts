@@ -23,7 +23,6 @@ export class updateProduct implements OnInit {
   oldprice: string
   category: string
   subCategory: string
-  oldpharmacyID: string
   filesToUpload: Array<File> = [];
   constructor(private product: productService, private productcategoryObj: productCategoryService, private router: Router, private flash: FlashMessagesService) {
   }
@@ -38,7 +37,6 @@ export class updateProduct implements OnInit {
     this.oldarbdesc = this.oldproduct.description_ar
     this.oldprice = this.oldproduct.price
     this.category = this.oldproduct.category
-    this.oldpharmacyID = this.oldproduct.pharmacyID
 
     this.productcategoryObj.getAllCategories().subscribe(res => {
       this.allProductCategories = res
@@ -77,7 +75,6 @@ export class updateProduct implements OnInit {
       formData.append('barcode', this.oldbar)
       formData.append('category', this.category)
       formData.append('subCategory', this.subCategory)
-      formData.append('pharmacyID', this.oldpharmacyID)
       formData.append('id', this.oldproduct._id)
 
       this.product.updateProduct(formData).subscribe(res => {

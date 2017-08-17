@@ -96,7 +96,7 @@
           </div>
           <div class="clearfix"></div>
         </div>
-        <div *ngFor="let product of products | searchFilter:term | paginate: { itemsPerPage: 12, currentPage: p }">
+        <div *ngFor="let product of products | searchFilter:term | paginate: { itemsPerPage: 15, currentPage: p } ; let in=index">
           <div class="card col-md-4 col-sm-6 col-xs-12">
             <img src={{product.ProductImage}} alt="No Image" width="100%" class="card-image img">
             <div class="card-content">
@@ -108,7 +108,7 @@
             <div class="card-action">
               <button type="button" (click)="show(product)" value="show" class="btn btn-info"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
               <button type="button" (click)="update(product)" value="Update" class="btn"><i class="fa fa-pencil w3-margin-right"></i></button>
-              <button type="button" (click)="delete(product._id)" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+              <button type="button" (click)="delete(product._id,in)" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>

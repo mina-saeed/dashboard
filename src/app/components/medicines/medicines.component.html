@@ -117,7 +117,7 @@
                       <th>Delete</th>
                     </tr>
                   </thead>
-                  <tbody *ngFor="let medicine of allMedicines | searchFilter2:term | paginate: { itemsPerPage: 5, currentPage: p }">
+                  <tbody *ngFor="let medicine of allMedicines | searchFilter2:term | paginate: { itemsPerPage: 5, currentPage: p }; let in=index">
                     <tr>
                       <td>{{medicine.name_english}}</td>
                       <td>{{medicine.english_description}}</td>
@@ -126,7 +126,7 @@
                       <td>{{medicine.category}}</td>
                       <td>{{medicine.price}}</td>
                       <td><input type="button" (click)="update(medicine)" value="Update" class="btn btn-warning"></td>
-                      <td><input type="button" (click)="delete(medicine._id)" value="Delete" class="btn btn-danger"></td>
+                      <td><input type="button" (click)="delete(medicine._id,in)" value="Delete" class="btn btn-danger"></td>
                     </tr>
                   </tbody>
                 </table>

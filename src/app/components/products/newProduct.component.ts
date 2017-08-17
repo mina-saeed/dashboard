@@ -22,7 +22,6 @@ export class newProduct implements OnInit {
 	price: string
 	category: string
 	subCategory: string = null
-	pharmacyID: string
 	filesToUpload: Array<File> = [];
 
 
@@ -32,7 +31,6 @@ export class newProduct implements OnInit {
 		this.productcategoryObj.getAllCategories().subscribe(res => {
 			this.allProductCategories = res
 			this.category = this.allProductCategories[0].name_en
-			this.pharmacyID = '1'
 			return this.allProductCategories
 		})
 
@@ -56,7 +54,6 @@ export class newProduct implements OnInit {
 			formData.append('barcode', this.bar)
 			formData.append('category', this.category)
 			formData.append('subCategory', this.subCategory)
-			formData.append('pharmacyID', this.pharmacyID)
 			this.product.addProduct(formData).subscribe(res => {
 				if (res) {
 					this.router.navigate(['/products'])

@@ -21,17 +21,13 @@ export class categories implements OnInit {
 
 	}
 
-	delete(id) {
+	delete(id, index) {
 		this.categoryObj.deleteCategory(id).subscribe(res => {
 			if (res == 200) {
 				window.scroll(0, 0)
 				this.flashMessage.show('Category deleted successfully', { cssClass: 'alert-success', timeout: 3000 })
-				for (var i = 0; i < this.allCategories.length; i++) {
-					if (this.allCategories[i]._id == id) {
-						this.allCategories.splice(i, 1)
-						return this.allCategories;
-					}
-				}
+				this.allCategories.splice(index, 1)
+				return this.allCategories;
 			}
 		});
 	}

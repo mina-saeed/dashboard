@@ -21,17 +21,14 @@ export class medicines implements OnInit {
 
 	}
 
-	delete(id) {
+	delete(id, index) {
 		this.medicineObj.deleteMedicine(id).subscribe(res => {
 			if (res == 200) {
 				window.scroll(0, 0)
 				this.flashMessage.show('Medicine deleted successfully', { cssClass: 'alert-success', timeout: 3000 })
-				for (var i = 0; i < this.allMedicines.length; i++) {
-					if (this.allMedicines[i]._id == id) {
-						this.allMedicines.splice(i, 1)
-						return this.allMedicines;
-					}
-				}
+				this.allMedicines.splice(index, 1)
+				return this.allMedicines;
+
 			}
 		});
 	}

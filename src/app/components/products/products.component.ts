@@ -22,17 +22,13 @@ export class products implements OnInit {
 		})
 	}
 
-	delete(id) {
+	delete(id,index) {
 		this.prod.deleteProduct(id).subscribe(res => {
 			if (res == 200) {				
 				window.scroll(0,0)
 				this.flashMessage.show('Product deleted successfully', { cssClass: 'alert-success', timeout: 3000 })
-				for (var i = 0; i < this.products.length; i++) {
-					if (this.products[i]._id == id) {
-						this.products.splice(i, 1)
+						this.products.splice(index, 1)
 						return this.products;
-					}
-				}
 			}
 		});
 	}
