@@ -13,7 +13,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 export class newProduct implements OnInit {
 	private allProductCategories = []
-	private allProductSubCategories =[]
+	private allProductSubCategories = []
 	bar: string
 	engname: string
 	arbname: string
@@ -55,29 +55,35 @@ export class newProduct implements OnInit {
 			formData.append('price', this.price)
 			formData.append('barcode', this.bar)
 			formData.append('category', this.category)
+			formData.append('subCategory', this.subCategory)
 			formData.append('pharmacyID', this.pharmacyID)
 			this.product.addProduct(formData).subscribe(res => {
 				if (res) {
 					this.router.navigate(['/products'])
 					this.flash.show('Product added Successfully', { cssClass: 'alert-success', timeout: 3000 })
-
 				}
 			})
 		}
 		else {
 			window.scroll(0, 0)
 			this.flash.show('Please add an Image', { cssClass: 'alert-danger', timeout: 3000 })
-
 		}
 	}
 
 	Onchange(cat) {
 		for (var i = 0; i < this.allProductCategories.length; i++) {
 			if (this.allProductCategories[i].name_en == cat) {
-			this.productcategoryObj.getAllsubCategories(this.allProductCategories[i]._id).subscribe(res => {
-			this.allProductSubCategories = res
-			this.subCategory = this.allProductSubCategories[0].name_en
-			return this.allProductSubCategories
+				this.productcategoryObj.getAllsubCategories(this.allProductCategories[i]._id).subscribe(res => {
+					if (res) {
+						console.log(res)
+						this.allProductSubCategories = res
+						this.subCategory = this.allProductSubCategories[0].name_en
+						return this.allProductSubCategories
+					}
+					else {
+						console.log(res)
+						return this.subCategory = null
+					}
 				})
 			}
 		}

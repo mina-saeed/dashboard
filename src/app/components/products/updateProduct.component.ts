@@ -13,6 +13,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 export class updateProduct implements OnInit {
   private allProductCategories = [];
+  private allProductSubCategories = []
   oldproduct: any
   oldbar: string
   oldengname: string
@@ -37,12 +38,24 @@ export class updateProduct implements OnInit {
     this.oldarbdesc = this.oldproduct.description_ar
     this.oldprice = this.oldproduct.price
     this.category = this.oldproduct.category
-    this.subCategory = this.oldproduct.subCategory
     this.oldpharmacyID = this.oldproduct.pharmacyID
+
     this.productcategoryObj.getAllCategories().subscribe(res => {
       this.allProductCategories = res
-      return this.allProductCategories
     })
+    for (var i = 0; i < this.allProductCategories.length; i++) {
+      if (this.allProductCategories[i].name_en == this.category) {
+        this.productcategoryObj.getAllsubCategories(this.allProductCategories[i]._id).subscribe(res => {
+          if (res) {
+            this.allProductSubCategories = res
+            this.subCategory = this.oldproduct.subCategory
+          }
+          else {
+            this.subCategory = null
+          }
+        })
+      }
+    }
 
   }
 
@@ -63,6 +76,7 @@ export class updateProduct implements OnInit {
       formData.append('price', this.oldprice)
       formData.append('barcode', this.oldbar)
       formData.append('category', this.category)
+      formData.append('subCategory', this.subCategory)
       formData.append('pharmacyID', this.oldpharmacyID)
       formData.append('id', this.oldproduct._id)
 
@@ -73,11 +87,30 @@ export class updateProduct implements OnInit {
         }
       })
     }
-    else {				
-      window.scroll(0,0)
+    else {
+      window.scroll(0, 0)
       this.flash.show('Please add an Image', { cssClass: 'alert-danger', timeout: 3000 })
     }
   }
+
+  Onchange(cat) {
+    for (var i = 0; i < this.allProductCategories.length; i++) {
+      if (this.allProductCategories[i].name_en == cat) {
+        this.productcategoryObj.getAllsubCategories(this.allProductCategories[i]._id).subscribe(res => {
+          if (res) {
+            this.allProductSubCategories = res
+            this.subCategory = this.allProductSubCategories[0].name_en
+            return this.allProductSubCategories
+          }
+          else {
+            this.subCategory = null
+          }
+        })
+      }
+    }
+  }
+
+
 }
 
 interface product {

@@ -16,6 +16,7 @@ export class products implements OnInit {
 	constructor(private dialogService: DialogService, private prod: productService, private router: Router, private flashMessage: FlashMessagesService) { }
 	ngOnInit() {
 		this.prod.allProducts().subscribe(res => {
+			console.log(res)
 			this.products = res
 			return this.products
 		})
