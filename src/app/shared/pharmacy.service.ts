@@ -34,4 +34,12 @@ export class pharmacy {
 		return this.http.post(config.pharmacyIP + '/banPharmacy', JSON.stringify({ email: email }), new RequestOptions({ headers: headers }))
 			.map(res => { return res })
 	}
+
+		getAllpharmaLocation(location): any {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.get(config.locationIP + 'pharmacyLocation/'+location, new RequestOptions({ headers: headers })).map(res => res.json());
+
+	}
 }

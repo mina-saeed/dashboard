@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { Http, Headers, RequestOptions, Response } from '@angular/http'
+import 'rxjs/add/operator/map'
 var config = JSON.parse(JSON.stringify(require('../../config.json')));
 
-import 'rxjs/add/operator/map'
 @Injectable()
 export class users {
 	private user: any;
@@ -11,7 +11,6 @@ export class users {
 
 	}
 	getUser(user_email, user_password, request_token): any {
-
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
@@ -34,7 +33,6 @@ export class users {
 
 	}
 	register(user_name, user_email, user_password, request_token): any {
-
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
@@ -49,7 +47,6 @@ export class users {
 
 	}
 	logout(): any {
-
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		this.http.get(config.userIP + '/logout', new RequestOptions({ headers: headers })).map(res => res.json).subscribe(data => { if (data) { return this.router.navigate(['']) } })

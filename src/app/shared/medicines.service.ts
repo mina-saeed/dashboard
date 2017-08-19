@@ -1,64 +1,61 @@
-import {Injectable} from '@angular/core'
-import {Router} from '@angular/router'
-import {Http , Headers , RequestOptions} from '@angular/http'
-import 'rxjs/add/operator/map' 
+import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
+import { Http, Headers, RequestOptions } from '@angular/http'
+import 'rxjs/add/operator/map'
 var config = JSON.parse(JSON.stringify(require('../../config.json')));
 
 
 @Injectable()
 
 export class medicineService {
-	constructor(private http: Http , private router: Router){}
+	constructor(private http: Http, private router: Router) { }
 
-	getAllMedicines():any{
-		
-		let headers = new Headers();
-    		headers.append('Authorization', config.auth);
-    		headers.append('Content-Type', 'application/json')
-
-		return this.http.get(config.medicineIP+'all' ,new RequestOptions({headers: headers})).map(res=>res.json())
-	}
-
-	addMedicine(medicine){
+	getAllMedicines(): any {
 
 		let headers = new Headers();
-    		headers.append('Authorization', config.auth);
-    		headers.append('Content-Type', 'application/json')
-
-    		return this.http.post(config.medicineIP+'new', JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
-    			return res.status
-    		})
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.get(config.medicineIP + 'all', new RequestOptions({ headers: headers })).map(res => res.json())
 	}
-		
-	deleteMedicine(id){
+
+	addMedicine(medicine) {
+
 		let headers = new Headers();
-    		headers.append('Authorization', config.auth);
-    		headers.append('Content-Type', 'application/json')
-			return this.http.delete(config.medicineIP+'deleteMedicine/'+id,new RequestOptions({headers: headers})).map(res=>{
-				return res.status
-			})
-
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.post(config.medicineIP + 'new', JSON.stringify(medicine), new RequestOptions({ headers: headers })).map(res => {
+			return res.status
+		})
 	}
 
-	updateMedicine(medicine){
+	deleteMedicine(id) {
 		let headers = new Headers();
-    		headers.append('Authorization', config.auth);
-    		headers.append('Content-Type', 'application/json')
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.delete(config.medicineIP + 'deleteMedicine/' + id, new RequestOptions({ headers: headers })).map(res => {
+			return res.status
+		})
 
-    		return this.http.put(config.medicineIP+'updateMedicine', JSON.stringify(medicine), new RequestOptions({headers: headers})).map(res=>{
-    			return res.status
-    		})
 	}
 
-	store(medicine){
+	updateMedicine(medicine) {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.put(config.medicineIP + 'updateMedicine', JSON.stringify(medicine), new RequestOptions({ headers: headers })).map(res => {
+			return res.status
+		})
+	}
+
+	store(medicine) {
 		localStorage.setItem('medicine', JSON.stringify(medicine));
 	}
 
-	retreive(){
+	retreive() {
 		return localStorage.getItem('medicine');
 	}
-	
-	clear(){
+
+	clear() {
 		localStorage.removeItem('medicine');
 	}
 }

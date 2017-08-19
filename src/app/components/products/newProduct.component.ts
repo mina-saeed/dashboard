@@ -21,7 +21,7 @@ export class newProduct implements OnInit {
 	arbdesc: string
 	price: string
 	category: string
-	subCategory: string = null
+	subCategory: string 
 	filesToUpload: Array<File> = [];
 
 
@@ -44,7 +44,7 @@ export class newProduct implements OnInit {
 		if (this.filesToUpload.length > 0) {
 			const files: Array<File> = this.filesToUpload;
 			const formData = new FormData();
-
+console.log(this.subCategory)
 			formData.append("image", files[0], files[0]['name']);
 			formData.append('name_en', this.engname)
 			formData.append('name_ar', this.arbname)
@@ -53,7 +53,7 @@ export class newProduct implements OnInit {
 			formData.append('price', this.price)
 			formData.append('barcode', this.bar)
 			formData.append('category', this.category)
-			formData.append('subCategory', this.subCategory)
+			formData.append('subCategory', 'sub')
 			this.product.addProduct(formData).subscribe(res => {
 				if (res) {
 					this.router.navigate(['/products'])
@@ -79,7 +79,7 @@ export class newProduct implements OnInit {
 					}
 					else {
 						console.log(res)
-						return this.subCategory = null
+						//return this.subCategory = null
 					}
 				})
 			}
