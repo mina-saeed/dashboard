@@ -17,6 +17,7 @@ import { productDialog } from './components/products/dialog.component'
 import { TruncatePipe } from 'angular2-truncate';
 import { productCategoryDialog } from './components/productCategory/pcdialog.component'
 import { productSubcategoryDialog } from './components/productSubcategory/pscdialog.component'
+import { adsDialog } from './components/ads/adsDialog.component'
 
 
 
@@ -27,6 +28,7 @@ import { productSubcategoryDialog } from './components/productSubcategory/pscdia
     productDialog,
     productCategoryDialog,
     productSubcategoryDialog,
+    adsDialog,
     TruncatePipe
   ],
   imports: [
@@ -36,7 +38,9 @@ import { productSubcategoryDialog } from './components/productSubcategory/pscdia
   entryComponents: [
     productDialog,
     productCategoryDialog,
-    productSubcategoryDialog
+    productSubcategoryDialog,
+    adsDialog
+
   ],
   bootstrap: [AppComponent]
 })

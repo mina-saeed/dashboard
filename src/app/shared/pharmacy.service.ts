@@ -42,4 +42,12 @@ export class pharmacy {
 		return this.http.get(config.locationIP + 'pharmacyLocation/'+location, new RequestOptions({ headers: headers })).map(res => res.json());
 
 	}
+
+		pharmacyPriority(pharmacyID,deliverTo): any {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.post(config.locationIP + 'pharmacyPriority', JSON.stringify({ pharmacyID: pharmacyID,deliverTo:deliverTo }), new RequestOptions({ headers: headers }))
+			.map(res => { return res })
+	}
 }

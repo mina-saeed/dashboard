@@ -14,5 +14,13 @@ export class AdsService {
 		return this.http.post(config.adsIP + 'newAds',adv, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
         })
-    }
+	}
+	
+		getconfirmedAds(): any {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.get(config.adsIP + 'confirmedAds', new RequestOptions({ headers: headers })).map(res => res.json());
+
+	}
 	}

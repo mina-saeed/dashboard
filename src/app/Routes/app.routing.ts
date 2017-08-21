@@ -34,6 +34,7 @@ import { LineChartDemoComponent } from '../components/chart/chart.component'
 import { locations } from '../components/locations/locations.component'
 import { updatemedicine } from '../components/medicines/updatemedicine.component'
 import { newAds } from '../components/ads/addAds.component'
+import { Ads } from '../components/ads/Ads.component'
 
 const componentRoutes: Routes = [
 
@@ -159,6 +160,12 @@ const componentRoutes: Routes = [
 		path: 'addAds',
 		component: newAds,
 		canActivate: [userGuard]
+	},
+	{
+		path: 'allconfirmedAds',
+		component: Ads,
+		canActivate: [userGuard]
+
 	}
 
 ]
@@ -207,5 +214,6 @@ export const RoutingComponents = [
 	updateCategory,
 	updateProductCategory,
 	updateproductSubcategory,
-	newAds
+	newAds,
+	Ads
 ]

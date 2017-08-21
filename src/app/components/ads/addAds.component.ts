@@ -28,6 +28,7 @@ export class newAds {
 	addAds() {
 
 	if (this.filesToUpload.length > 0) {
+		if(this.end>this.start){
 			const files: Array<File> = this.filesToUpload;
 			const formData = new FormData();
 			formData.append("image", files[0], files[0]['name']);
@@ -42,7 +43,11 @@ export class newAds {
 					this.flash.show('Ads added Successfully', { cssClass: 'alert-success', timeout: 3000 })
 				}
 			})
+		}else{
+			window.scroll(0, 0)
+			this.flash.show('End Date must be greater than Start Date', { cssClass: 'alert-danger', timeout: 3000 })			
 		}
+	}
 		else {
 			window.scroll(0, 0)
 			this.flash.show('Please add an Image', { cssClass: 'alert-danger', timeout: 3000 })

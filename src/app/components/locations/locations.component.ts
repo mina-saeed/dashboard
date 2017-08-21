@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { pharmacy } from '../../shared/pharmacy.service'
+import { FlashMessagesService } from 'angular2-flash-messages';
 var settings = JSON.parse(JSON.stringify(require('../../settings.json')));
 
 @Component({
@@ -12,18 +13,19 @@ export class locations {
     private pharmacies = [];
     private regions = [];
     private locations = [];
+    private deliverTo = [];
+    private pharmapriority = [];
     private initial: String = '';
     private type: Boolean = false;
     private table: Boolean = false;
-    constructor(private pharmacy: pharmacy) { }
+    private area: string;
+    constructor(private pharmacy: pharmacy, private flashMessage: FlashMessagesService) { }
 
     ngOnInit() {
-        console.log(settings.public.cities)
         this.regions = settings.public.cities;
     }
 
     OnchangeRe(region) {
-        console.log(region)
         switch (region) {
             case "Cairo": this.locations = settings.public.cairoList; break;
             case "Giza": this.locations = settings.public.gizaList; break;
@@ -58,10 +60,20 @@ export class locations {
 
     OnchangeAR(area) {
         this.table = true;
+        this.area = area;
         this.pharmacy.getAllpharmaLocation(area).subscribe(res => {
             if (res) {
-                console.log(res);
                 this.pharmacies = res
+                for (var i = 0; i < this.pharmacies.length; i++) {
+                    for(var j=0; j<this.pharmacies[i].deliverTo.length; j++){
+                        if(this.pharmacies[i].deliverTo[j].name == area){
+                            this.pharmapriority[i] = this.pharmacies[i].deliverTo[j].priority
+                            break;
+                        }
+                    }
+                }
+                console.log(this.pharmacies)
+                console.log
                 return this.pharmacies
             }
             else {
@@ -69,5 +81,35 @@ export class locations {
             }
         })
 
+    }
+
+    pharmacyPriority(pharmacyID, proirity, deliverTo) {
+        if (JSON.parse(deliverTo).constructor === Array) {
+            this.deliverTo = JSON.parse(deliverTo)
+            var a = this.area
+            var arr = [];
+            for (var i = 0; i < this.deliverTo.length; i++) {
+                if (this.area == this.deliverTo[i]) {
+                    var ob = {
+                        name:this.deliverTo[i],
+                        priority: parseInt(this.pharmapriority[proirity])
+                    }
+                    arr.push(ob);
+                }
+                else{
+                    var ob2 = {
+                        name:this.deliverTo[i],
+                        priority: 0
+                    }
+                    arr.push(ob2)
+                }
+            } 
+            console.log(pharmacyID,arr)
+          this.pharmacy.pharmacyPriority(pharmacyID, arr).subscribe(res => {
+              if (res) {
+                  this.flashMessage.show('Locations prioritized successfully', { cssClass: 'alert-success', timeout: 3000 })
+              }
+          })
+        }
     }
 }
