@@ -11,7 +11,6 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 export class newAds {
 	engname: string
-	arbname: string
 	engdesc: string
 	start: string
 	end: string

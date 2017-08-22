@@ -59,24 +59,24 @@ export class locations {
     }
 
     OnchangeAR(area) {
-        this.table = true;
         this.area = area;
         this.pharmacy.getAllpharmaLocation(area).subscribe(res => {
-            if (res) {
+            if (res!=[]) {
+                this.table = true;                
                 this.pharmacies = res
                 for (var i = 0; i < this.pharmacies.length; i++) {
                     for (var j = 0; j < this.pharmacies[i].deliverTo.length; j++) {
                         if (this.pharmacies[i].deliverTo[j].name == area) {
-                            this.pharmapriority[i] = this.pharmacies[i].deliverTo[j].priority
+                            this.pharmapriority[i] = this.pharmacies[i].deliverTo[j].priority+"";
                             break;
                         }
                     }
                 }
                 console.log(this.pharmacies)
-                console.log
                 return this.pharmacies
             }
             else {
+                this.table = false;                
                 return false;
             }
         })
