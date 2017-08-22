@@ -47,7 +47,7 @@ export class pharmacy {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
-		return this.http.post(config.locationIP + 'pharmacyPriority', JSON.stringify({ pharmacyID: pharmacyID,deliverTo:deliverTo }), new RequestOptions({ headers: headers }))
+		return this.http.put(config.locationIP + 'pharmacyPriority', JSON.stringify({ pharmacyID: pharmacyID,deliverTo:deliverTo }), new RequestOptions({ headers: headers }))
 			.map(res => { return res })
 	}
 }

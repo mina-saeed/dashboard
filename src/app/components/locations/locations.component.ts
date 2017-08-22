@@ -65,8 +65,8 @@ export class locations {
             if (res) {
                 this.pharmacies = res
                 for (var i = 0; i < this.pharmacies.length; i++) {
-                    for(var j=0; j<this.pharmacies[i].deliverTo.length; j++){
-                        if(this.pharmacies[i].deliverTo[j].name == area){
+                    for (var j = 0; j < this.pharmacies[i].deliverTo.length; j++) {
+                        if (this.pharmacies[i].deliverTo[j].name == area) {
                             this.pharmapriority[i] = this.pharmacies[i].deliverTo[j].priority
                             break;
                         }
@@ -86,30 +86,18 @@ export class locations {
     pharmacyPriority(pharmacyID, proirity, deliverTo) {
         if (JSON.parse(deliverTo).constructor === Array) {
             this.deliverTo = JSON.parse(deliverTo)
-            var a = this.area
-            var arr = [];
             for (var i = 0; i < this.deliverTo.length; i++) {
-                if (this.area == this.deliverTo[i]) {
-                    var ob = {
-                        name:this.deliverTo[i],
-                        priority: parseInt(this.pharmapriority[proirity])
-                    }
-                    arr.push(ob);
+                if (this.area == this.deliverTo[i].name) {
+                    this.deliverTo[i].priority = parseInt(this.pharmapriority[proirity])
                 }
-                else{
-                    var ob2 = {
-                        name:this.deliverTo[i],
-                        priority: 0
-                    }
-                    arr.push(ob2)
+
+            }
+            console.log(pharmacyID, this.deliverTo)
+            this.pharmacy.pharmacyPriority(pharmacyID, this.deliverTo).subscribe(res => {
+                if (res) {
+                    this.flashMessage.show('Locations prioritized successfully', { cssClass: 'alert-success', timeout: 3000 })
                 }
-            } 
-            console.log(pharmacyID,arr)
-          this.pharmacy.pharmacyPriority(pharmacyID, arr).subscribe(res => {
-              if (res) {
-                  this.flashMessage.show('Locations prioritized successfully', { cssClass: 'alert-success', timeout: 3000 })
-              }
-          })
+            })
         }
     }
 }
