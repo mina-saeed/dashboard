@@ -16,6 +16,7 @@ export class AllpharmacyComponent implements OnInit {
   ngOnInit() {
     this.pharmacy.getAllpharma().subscribe(res => {
       if (res) {
+        console.log(res)
         this.allpharma = res
         return this.allpharma
       }
