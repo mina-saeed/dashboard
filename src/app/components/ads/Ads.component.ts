@@ -11,13 +11,19 @@ import { adsDialog } from './adsDialog.component';
 })
 
 export class Ads implements OnInit {
-    private allAds = []
+    private confimedAds = []
+    private requestedAds = []
     p: number = 1;
+    private request:Boolean = true;
+    private confirm:Boolean = false;
     constructor(private dialogService: DialogService, private ads: AdsService, private router: Router, private flashMessage: FlashMessagesService) { }
     ngOnInit() {
         this.ads.getconfirmedAds().subscribe(res => {
-            this.allAds = res
-            return this.allAds
+            this.confimedAds = res
+        })
+        this.ads.getunconfirmedAds().subscribe(res =>{
+            console.log(res)
+            this.requestedAds = res
         })
     }
 
@@ -27,5 +33,26 @@ export class Ads implements OnInit {
             end: ads.end, link: ads.link,image: ads.adsImage
         });
 
+    }
+    requested(){
+        this.request = true;
+        this.confirm = false;
+
+    }
+
+    confirmed(){
+        this.request = false;
+        this.confirm = true;
+    }
+
+    conf(id,index){
+        this.ads.confirmAds(id).subscribe(res=> {
+            if(res){
+                window.scroll(0,0)
+				this.flashMessage.show('Ads Confirmed successfully', { cssClass: 'alert-success', timeout: 3000 })
+						this.requestedAds.splice(index, 1)
+						return this.requestedAds;
+            }
+        })
     }
 }

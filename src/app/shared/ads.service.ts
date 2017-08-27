@@ -11,16 +11,32 @@ export class AdsService {
 	addAds(adv) {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
-		return this.http.post(config.adsIP + 'newAds',adv, new RequestOptions({ headers: headers })).map(res => {
+		return this.http.post(config.adsIP + 'newAds', adv, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
-        })
+		})
 	}
-	
-		getconfirmedAds(): any {
+
+	getconfirmedAds(): any {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
 		headers.append('Content-Type', 'application/json')
 		return this.http.get(config.adsIP + 'confirmedAds', new RequestOptions({ headers: headers })).map(res => res.json());
 
 	}
+	confirmAds(id): any {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.post(config.adsIP + 'confirmAdsRequest/', JSON.stringify({ id: id }), new RequestOptions({ headers: headers })).map(res => {
+			return res.status
+		});
+
 	}
+	getunconfirmedAds(): any {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.get(config.adsIP + 'adsRequests', new RequestOptions({ headers: headers })).map(res =>  res.json());
+
+	}
+}

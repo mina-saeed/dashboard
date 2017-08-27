@@ -1,4 +1,16 @@
 <style>
+  .center {
+    text-align: center;
+    margin-top: 35px
+  }
+
+  .my-pagination /deep/ .ngx-pagination .current {
+    font-size: 15px;
+    color: black;
+    padding: 4px 8px;
+    text-decoration: none;
+  }
+
   .card {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   }
@@ -86,29 +98,65 @@
       <app-topnav></app-topnav>
       <!-- page content -->
       <div class="right_col" role="main">
-        <div class="x_title">
-          <h2>All Confirmed Advertisements </h2>
-          <div class="col-md-offset-10">
-            <a href="/addAds" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add new Advertisement</a>
-          </div>
-          <div class="clearfix"></div>
+        <div class="page-title">
+          <ul class="nav nav-tabs">
+            <li class="active"><button type="button" (click)="confirmed()" value="confirmed" class="btn btn-default">Confirmed Ads</button></li>
+            <li><button type="button" (click)="requested()" value="requested" class="btn btn-default">Requested Ads</button></li>
+          </ul>
         </div>
-        <div *ngFor="let ads of allAds  | paginate: { itemsPerPage: 15, currentPage: p } ; let in=index">
-          <div class="card col-md-4 col-sm-6 col-xs-12">
-            <img src={{ads.adsImage}} alt="No Image" width="100%" class="card-image img">
-            <div class="card-content">
-              <h2><strong>{{ads.name}}</strong></h2>
-              <p>{{ads.description | truncate : 30 }}</p>
+        <div class="row">
+          <div class="x_panel">
+            <div class="x_content">
+              <div *ngIf="request">
+                <div class="title_left">
+                  <h2>All Requested Advertisements </h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div *ngFor="let ads of requestedAds  | paginate: { itemsPerPage: 12, currentPage: p } ; let in=index">
+                  <div class="card col-md-4 col-sm-6 col-xs-12">
+                    <img src={{ads.adsImage}} alt="No Image" width="100%" class="card-image img">
+                    <div class="card-content">
+                      <h2><strong>{{ads.name}}</strong></h2>
+                      <p>{{ads.description | truncate : 30 }}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="card-action">
+                      <button type="button" (click)="show(ads)" value="show" class="btn btn-info"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                      <button type="button" (click)="conf(ads._id,in)" value="show" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div *ngIf="confirm">
+                <div class="title_left">
+                  <h2>All Confirmed Advertisements </h2>
+                    <a href="/addAds" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Advertisement</a>
+                  <div class="clearfix"></div>
+                </div>
+                <div *ngFor="let ads of confimedAds  | paginate: { itemsPerPage: 12, currentPage: p } ; let in=index">
+                  <div class="card col-md-4 col-sm-6 col-xs-12">
+                    <img src={{ads.adsImage}} alt="No Image" width="100%" class="card-image img">
+                    <div class="card-content">
+                      <h2><strong>{{ads.name}}</strong></h2>
+                      <p>{{ads.description | truncate : 30 }}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="card-action">
+                        <button type="button" (click)="show(ads)" value="show" class="btn btn-info"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                      </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
             </div>
-            <div class="clearfix"></div>
-            <div class="card-action">
-              <button type="button" (click)="show(ads)" value="show" class="btn btn-info"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+            <div class="center">
+              <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
             </div>
           </div>
         </div>
-        <div class="clearfix"></div>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
+
     </div>
     <!-- /page content -->
   </div>

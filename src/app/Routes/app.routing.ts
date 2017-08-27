@@ -162,7 +162,7 @@ const componentRoutes: Routes = [
 		canActivate: [userGuard]
 	},
 	{
-		path: 'allconfirmedAds',
+		path: 'allAds',
 		component: Ads,
 		canActivate: [userGuard]
 
