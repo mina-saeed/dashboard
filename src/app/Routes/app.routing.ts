@@ -35,6 +35,8 @@ import { locations } from '../components/locations/locations.component'
 import { updatemedicine } from '../components/medicines/updatemedicine.component'
 import { newAds } from '../components/ads/addAds.component'
 import { Ads } from '../components/ads/Ads.component'
+import { addpromo } from '../components/promotion/addpromo.component'
+import { promos } from '../components/promotion/promos.component'
 
 const componentRoutes: Routes = [
 
@@ -166,6 +168,16 @@ const componentRoutes: Routes = [
 		component: Ads,
 		canActivate: [userGuard]
 
+	},
+	{
+		path: 'addpromo',
+		component: addpromo,
+		canActivate: [userGuard]
+	},
+	{
+		path: 'promos',
+		component: promos,
+		canActivate: [userGuard]
 	}
 
 ]
@@ -215,5 +227,7 @@ export const RoutingComponents = [
 	updateProductCategory,
 	updateproductSubcategory,
 	newAds,
-	Ads
+	Ads,
+	addpromo,
+	promos
 ]

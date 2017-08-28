@@ -15,7 +15,6 @@ export class newAds {
 	start: string
 	end: string
     link: string 
-    active: string = '1'
 	filesToUpload: Array<File> = [];
 
 	constructor(private AdsService: AdsService, private router: Router, private flash: FlashMessagesService) { }
@@ -36,7 +35,6 @@ export class newAds {
             formData.append('start', this.start)
 			formData.append('end', this.end)
 			formData.append('link', this.link)
-			formData.append('active', this.active)
 			this.AdsService.addAds(formData).subscribe(res => {
 				if (res) {
 					this.flash.show('Ads added Successfully', { cssClass: 'alert-success', timeout: 3000 })

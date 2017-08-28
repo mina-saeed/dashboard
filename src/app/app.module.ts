@@ -18,6 +18,7 @@ import { TruncatePipe } from 'angular2-truncate';
 import { productCategoryDialog } from './components/productCategory/pcdialog.component'
 import { productSubcategoryDialog } from './components/productSubcategory/pscdialog.component'
 import { adsDialog } from './components/ads/adsDialog.component'
+import { EqualValidator } from './components/login/password.match.directive';
 
 
 
@@ -29,7 +30,8 @@ import { adsDialog } from './components/ads/adsDialog.component'
     productCategoryDialog,
     productSubcategoryDialog,
     adsDialog,
-    TruncatePipe
+    TruncatePipe,
+    EqualValidator
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, routes, FlashMessagesModule, ChartsModule,

@@ -1,0 +1,84 @@
+<body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="/home" class="site_title"><i class="fa fa-paw"></i> <span>MY PHARMACY</span></a>
+            </div>
+            <app-sidebar></app-sidebar>
+          </div>
+        </div>
+        <app-topnav></app-topnav>
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Add New Promotion </h3>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_content">
+                  <form class="form-horizontal form-label-left" #AdsForm="ngForm" (ngSubmit)="addPromo()" novalidate>
+                    <input type="hidden" id="creator" name="creator" value="admin" />
+                    <div ngModelGroup="name">
+                      <span class="section">Promo Code</span>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code<span class="required">*</span>
+                          </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="code" name="code" #codeRef="ngModel" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                            data-validate-words="2" placeholder="Code" required [(ngModel)]="code">
+                        </div>
+                      </div>
+                      <div [hidden]="codeRef.valid || codeRef.untouched " class="alert alert-danger">
+                        Please Add PromoCode
+                      </div>
+                    </div>
+                    <span class="section">Promo Duration</span>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Start Date <span class="required">*</span>
+                          </label>
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                        <input type="date" id="start" name="start" class="form-control" [(ngModel)]="start" required>
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">End Date <span class="required">*</span>
+                          </label>
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                        <input type="date" id="end" name="end" class="form-control" [(ngModel)]="end" required>
+                      </div>
+                    </div>
+                    <span class="section">Advertisement Link</span>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Link <span class="required">*</span>
+                          </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="percentage" name="percentage" #percentageRef="ngModel" [(ngModel)]="percentage" required class="form-control col-md-7 col-xs-12"
+                        />
+                      </div>
+                    </div>
+                    <div [hidden]="percentageRef.valid || percentageRef.untouched " class="alert alert-danger">
+                      Please Add Percentage
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-md-offset-3">
+                        <button id="submit" type="submit" [disabled]="!AdsForm.form.valid" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /page content -->
+    </div>
+  </body>

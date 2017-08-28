@@ -66,17 +66,28 @@
                     </div>
               </div>
 
-              <div>
-                <input type="password" class="form-control" #regPass="ngModel" id="reg_password" name="reg_password" placeholder="Password" required ngModel />
-                              <div [hidden]="regPass.valid || regPass.untouched" class="alert alert-danger">
-                Please Enter Password
+              <div class="form-group">
+                <label for="name">Password</label>
+                <input type="password" class="form-control" id="password"
+                       required
+                        name="password"
+                       #password="ngModel" style ="display: inline-block; width: 340px;" required minlength="8" maxlength="15" ngModel>
+                <div [hidden]="password.valid || password.pristine"
+                     class="alert alert-danger">
+                  Password is required between 8 and 15 characters
+                </div> 
               </div>
-              </div>
-                          <div>
-                <input type="password" class="form-control" #regPass2="ngModel" id="reg_password2" name="reg_password2" placeholder="Confirm Password" required ngModel />
-                              <div [hidden]="regPass.valid || regPass.untouched" class="alert alert-danger">
-                Please confirm Password
-              </div>
+              <div class="form-group">
+                <label for="name">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword"
+                       required
+                       validateEqual="password"
+                        name="confirmPassword"
+                       #confirmPassword="ngModel" style ="display: inline-block; width: 340px;" ngModel>
+                <div [hidden]="confirmPassword.valid || confirmPassword.pristine"
+                     class="alert alert-danger">
+                     Passwords did not match
+                </div>
               </div>
 
               <div>
