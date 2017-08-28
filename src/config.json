@@ -6,6 +6,7 @@
     "categoryIP": "http://146.185.148.66:3006/",
     "productcategoryIP": "http://146.185.148.66:3007/",
     "adsIP": "http://146.185.148.66:3050/",
+    "promoIP": "http://146.185.148.66:2300/",    
     "locationIP": "http://146.185.148.66:3002/",
     "auth": "Basic YWRtaW46MTIzNDU2"
 }

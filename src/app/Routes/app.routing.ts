@@ -37,7 +37,7 @@ import { newAds } from '../components/ads/addAds.component'
 import { Ads } from '../components/ads/Ads.component'
 import { addpromo } from '../components/promotion/addpromo.component'
 import { promos } from '../components/promotion/promos.component'
-
+import { updatepromo } from '../components/promotion/updatepromo.component'
 const componentRoutes: Routes = [
 
 	{
@@ -178,6 +178,11 @@ const componentRoutes: Routes = [
 		path: 'promos',
 		component: promos,
 		canActivate: [userGuard]
+	},
+	{
+		path: 'updatepromo',
+		component: updatepromo,
+		canActivate: [userGuard]
 	}
 
 ]
@@ -229,5 +234,6 @@ export const RoutingComponents = [
 	newAds,
 	Ads,
 	addpromo,
-	promos
+	promos,
+	updatepromo
 ]
