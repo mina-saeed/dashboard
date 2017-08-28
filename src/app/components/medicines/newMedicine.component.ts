@@ -15,6 +15,7 @@ export class newMedicine implements OnInit {
     private allCategories = []
     private type: Boolean = false;
     private fixedprice: String = 'No';
+    private requirePrescription: string = 'No'
     private category: string
     constructor(private medicine: medicineService, private router: Router, private categoryObj: categoryService, private flash: FlashMessagesService) { }
     ngOnInit() {

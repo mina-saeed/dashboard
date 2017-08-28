@@ -25,7 +25,6 @@ export class updatepromo implements OnInit{
             p.id = this.old._id
             p.newStart = this.start
             p.newEnd = this.end
-            console.log(p)
             this.PromoService.updatePromo(p).subscribe(res => {
                 if (res) {
                     console.log(res)

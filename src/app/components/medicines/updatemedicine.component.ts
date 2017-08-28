@@ -16,6 +16,7 @@ export class updatemedicine implements OnInit {
 	private allCategories = []
 	private type: Boolean = true;
 	private fixedprice: String = 'Yes';
+	requirePrescription: string
 	oldbar: string
 	oldengname: string
 	oldarbname: string
@@ -37,6 +38,7 @@ export class updatemedicine implements OnInit {
 		this.oldmilli = this.oldmedicine.milligrams
 		this.oldprice = this.oldmedicine.price
 		this.category = this.oldmedicine.category
+		this.requirePrescription = this.oldmedicine.requirePrescription
 		this.categoryObj.getAllCategories().subscribe(res => {
 			this.allCategories = res
 		})
@@ -80,6 +82,7 @@ interface medicine {
 	},
 	barcode: string,
 	price: number,
-	milligrams: number
+	milligrams: number,
+	requirePrescription: string
 }
 
