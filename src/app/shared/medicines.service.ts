@@ -22,8 +22,7 @@ export class medicineService {
 
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
-		headers.append('Content-Type', 'application/json')
-		return this.http.post(config.medicineIP + 'new', JSON.stringify(medicine), new RequestOptions({ headers: headers })).map(res => {
+		return this.http.post(config.medicineIP + 'new', medicine, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
 	}
@@ -41,8 +40,7 @@ export class medicineService {
 	updateMedicine(medicine) {
 		let headers = new Headers();
 		headers.append('Authorization', config.auth);
-		headers.append('Content-Type', 'application/json')
-		return this.http.put(config.medicineIP + 'updateMedicine', JSON.stringify(medicine), new RequestOptions({ headers: headers })).map(res => {
+		return this.http.put(config.medicineIP + 'updateMedicine', medicine, new RequestOptions({ headers: headers })).map(res => {
 			return res.status
 		})
 	}

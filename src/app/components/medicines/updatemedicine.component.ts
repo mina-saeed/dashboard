@@ -25,6 +25,7 @@ export class updatemedicine implements OnInit {
 	oldmilli: string
 	oldprice: string
 	category: string
+	filesToUpload: Array<File> = [];	
 	constructor(private medicine: medicineService, private router: Router,
 		private categoryObj: categoryService, private flashMessage: FlashMessagesService) {
 	}
@@ -43,17 +44,37 @@ export class updatemedicine implements OnInit {
 			this.allCategories = res
 		})
 	}
+	fileChange(event) {
+		this.filesToUpload = <Array<File>>event.target.files;
+	}
 
-	update(medicineFormData) {
-		var medicineFormDataID: medicine = medicineFormData
-		medicineFormDataID.id = this.oldmedicine._id
-		this.medicine.updateMedicine(medicineFormDataID).subscribe(res => {
+	update() {
+		if (this.filesToUpload.length > 0) {
+            const files: Array<File> = this.filesToUpload;
+            const formData = new FormData();
+            formData.append("image", files[0], files[0]['name']);
+            formData.append('name_english', this.oldengname)
+            formData.append('name_ar', this.oldarbname)
+            formData.append('english_description', this.oldengdesc)
+            formData.append('arabic_description', this.oldarbdesc)
+            formData.append('price', this.oldprice)
+            formData.append('barcode', this.oldbar)
+            formData.append('category', this.category)
+            formData.append('requirePrescription', this.requirePrescription)
+			formData.append('milligrams', this.oldmilli)
+			formData.append('id', this.oldmedicine._id)			
+		this.medicine.updateMedicine(formData).subscribe(res => {
 			if (res) {
 				this.medicine.clear();
 				this.flashMessage.show('Medicine updated successfully', { cssClass: 'alert-success', timeout: 3000 })
 				this.router.navigate(['/medicines'])
 			}
 		})
+	}
+	else{
+		window.scroll(0, 0)
+		this.flashMessage.show('Please add an Image', { cssClass: 'alert-danger', timeout: 3000 })
+	}
 	}
 
 	Onchange(fixed) {

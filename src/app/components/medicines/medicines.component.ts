@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { medicineService } from '../../shared/medicines.service'
 import { Router } from '@angular/router'
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { DialogService } from "ng2-bootstrap-modal";
+import { medicineDialog } from './mdialog.component';
 
 @Component({
 	selector: 'app-medicines',
@@ -11,11 +13,12 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 export class medicines implements OnInit {
 	private allMedicines = []
-	constructor(private medicineObj: medicineService, private router: Router, private flashMessage: FlashMessagesService) { }
+	constructor(private dialogService: DialogService, private medicineObj: medicineService, private router: Router, private flashMessage: FlashMessagesService) { }
 
 	ngOnInit() {
 		this.medicineObj.getAllMedicines().subscribe(res => {
 			this.allMedicines = res
+			console.log(res)
 			return this.allMedicines
 		})
 
@@ -38,4 +41,11 @@ export class medicines implements OnInit {
 		this.router.navigate(['/updateMedicine']);
 	}
 
+	show(medicine) {
+		this.dialogService.addDialog(medicineDialog, {
+			name_en: medicine.name_en, description_en: medicine.english_description, price: medicine.price,
+			category: medicine.category, barcode: medicine.barcode, image: medicine.image, milligrams: medicine.milligrams
+		});
+
+	}
 }

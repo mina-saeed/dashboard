@@ -18,6 +18,7 @@ import { TruncatePipe } from 'angular2-truncate';
 import { productCategoryDialog } from './components/productCategory/pcdialog.component'
 import { productSubcategoryDialog } from './components/productSubcategory/pscdialog.component'
 import { adsDialog } from './components/ads/adsDialog.component'
+import { medicineDialog } from './components/medicines/mdialog.component'
 import { EqualValidator } from './components/login/password.match.directive';
 
 
@@ -30,6 +31,7 @@ import { EqualValidator } from './components/login/password.match.directive';
     productCategoryDialog,
     productSubcategoryDialog,
     adsDialog,
+    medicineDialog,
     TruncatePipe,
     EqualValidator
   ],
@@ -41,7 +43,8 @@ import { EqualValidator } from './components/login/password.match.directive';
     productDialog,
     productCategoryDialog,
     productSubcategoryDialog,
-    adsDialog
+    adsDialog,
+    medicineDialog
 
   ],
   bootstrap: [AppComponent]

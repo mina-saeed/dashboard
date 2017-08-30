@@ -1,4 +1,15 @@
 <style>
+  .center {
+    text-align: center;
+    margin-top: 35px
+}
+  .my-pagination /deep/ .ngx-pagination .current {
+    font-size: 15px;
+    color: black;
+    padding: 4px 8px;
+    text-decoration: none;
+    
+  }
   .card {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   }
@@ -103,7 +114,6 @@
               <h2><strong>{{category.name_en}}</strong></h2>
               <p>{{category.description_en | truncate : 30 }}</p>
             </div>
-            <div class="clearfix"></div>
             <div class="card-action">
               <button type="button" (click)="show(category)" value="show" class="btn btn-info"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
               <button type="button" (click)="update(category)" value="Update" class="btn"><i class="fa fa-pencil w3-margin-right"></i></button>
@@ -111,19 +121,12 @@
             </div>
           </div>
         </div>
-        <div class="clearfix"></div>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <div class="clearfix"></div>    
+        <div class="center">            
+          <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+        </div>  
       </div>
     </div>
     <!-- /page content -->
-
-
-
-
-
-
-
-
-
   </div>
 </body>

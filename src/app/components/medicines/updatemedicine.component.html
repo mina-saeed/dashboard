@@ -81,6 +81,13 @@
                   <div [hidden]="descAr.valid || descAr.untouched " class="alert alert-danger">
                     Please Add Medicine Description in Arabic
                   </div>
+                  <span class="section">Medicine Image</span>
+                  <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Image <span class="required">*</span>
+                        </label>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                      <input type="file" id="image" name="image" class="form-control" (change)="fileChange($event)" accept="image/*" required>                      </div>
+                  </div>
                   <span class="section">Medicine Price</span>
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Fixed Price <span class="required">*</span>
