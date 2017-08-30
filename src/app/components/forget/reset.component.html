@@ -1,0 +1,49 @@
+
+      <!-- Bootstrap -->
+      <style type="text/css">
+        .body{
+          background-color: #fff !important
+        }
+      </style>
+        <body class="login" >
+          <div>
+              <a class="hiddenanchor" id="signup"></a>
+              <a class="hiddenanchor" id="signin"></a>
+              <div class="login_wrapper" >
+                <div class="animate form login_form">
+                  <section class="login_content">
+                  <form #registerForm="ngForm" (ngSubmit)="onReset(registerForm.value)">
+                    <h1>Reset your Password</h1>
+                    <div class="form-group">
+                      <label for="name">Password</label>
+                      <input type="password" class="form-control" id="password"
+                             required
+                              name="password"
+                             #password="ngModel" style ="display: inline-block; width: 340px;" required minlength="8" maxlength="15" ngModel>
+                      <div [hidden]="password.valid || password.pristine"
+                           class="alert alert-danger">
+                        Password is required between 8 and 15 characters
+                      </div> 
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Confirm Password</label>
+                      <input type="password" class="form-control" id="confirmPassword"
+                             required
+                             validateEqual="password"
+                              name="confirmPassword"
+                             #confirmPassword="ngModel" style ="display: inline-block; width: 340px;" ngModel>
+                      <div [hidden]="confirmPassword.valid || confirmPassword.pristine"
+                           class="alert alert-danger">
+                           Passwords did not match
+                      </div>
+                    </div>
+                    <div>
+                      <button class="btn btn-default submit" [disabled]="!registerForm.valid" >Submit</button>
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+        </body>
+      

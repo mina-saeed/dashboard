@@ -8,5 +8,6 @@
     "adsIP": "http://146.185.148.66:3050/",
     "promoIP": "http://146.185.148.66:2300/",    
     "locationIP": "http://146.185.148.66:3002/",
-    "auth": "Basic YWRtaW46MTIzNDU2"
+    "auth": "Basic YWRtaW46MTIzNDU2",
+    "resetIP":"http://146.185.148.66:3060"    
 }

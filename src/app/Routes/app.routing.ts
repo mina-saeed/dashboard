@@ -10,6 +10,8 @@ import { deactivateGuard } from '../guards/deactivate.guard'
 
 import { home } from '../components/home/home.component'
 import { login } from '../components/login/login.component'
+import { forgetpassword } from '../components/forget/forgetpassword.component'
+import { reset } from '../components/forget/reset.component'
 import { logout } from '../components/logout/logout.component'
 import { medicines } from '../components/medicines/medicines.component'
 import { newMedicine } from '../components/medicines/newMedicine.component'
@@ -183,6 +185,16 @@ const componentRoutes: Routes = [
 		path: 'updatepromo',
 		component: updatepromo,
 		canActivate: [userGuard]
+	},
+	{
+		path: 'forgetpassword',
+		component: forgetpassword,
+		canActivate: [deactivateGuard]
+	},
+	{
+		path: 'reset/:email',
+		component: reset,
+		canActivate: [deactivateGuard]
 	}
 
 ]
@@ -235,5 +247,7 @@ export const RoutingComponents = [
 	Ads,
 	addpromo,
 	promos,
-	updatepromo
+	updatepromo,
+	forgetpassword,
+	reset
 ]

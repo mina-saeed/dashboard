@@ -82,4 +82,18 @@ export class users {
 		return this.http.post(config.userIP + '/banUser', JSON.stringify({ email: email }), new RequestOptions({ headers: headers }))
 			.map(res => { return res })
 	}
+
+	forget(body): any {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json');
+		return this.http.post(config.resetIP + '/checkUser', body, new RequestOptions({ headers: headers })).map(res => res.status);
+	}
+
+	reset(body): any {
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json');
+		return this.http.put(config.resetIP + '/changePassword', body, new RequestOptions({ headers: headers })).map(res => res.status);
+	}
 }
