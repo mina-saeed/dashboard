@@ -72,7 +72,6 @@ export class locations {
                         }
                     }
                 }
-                console.log(this.pharmacies)
                 return this.pharmacies
             }
             else {

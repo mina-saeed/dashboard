@@ -96,4 +96,12 @@ export class users {
 		headers.append('Content-Type', 'application/json');
 		return this.http.put(config.resetIP + '/changePassword', body, new RequestOptions({ headers: headers })).map(res => res.status);
 	}
+
+	pharmacyHistory(email): any{
+		let headers = new Headers();
+		headers.append('Authorization', config.auth);
+		headers.append('Content-Type', 'application/json')
+		return this.http.get(config.userIP + '/pharmacyHistory/' + email, new RequestOptions({ headers: headers })).map(res => res.json());
+
+}
 }
